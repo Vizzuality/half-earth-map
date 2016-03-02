@@ -11,8 +11,6 @@
   "onecase":   true,
   "lastsemic": true,
   "globals": {
-    "_": true,
-    "Backbone": true,
-    "vg": true
+    "L": true
   }
 }
