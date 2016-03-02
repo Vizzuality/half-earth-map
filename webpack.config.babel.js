@@ -1,6 +1,5 @@
 'use strict';
 
-import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import nested from 'postcss-nested';
 import importCSS from 'postcss-import';
