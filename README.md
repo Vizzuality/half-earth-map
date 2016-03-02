@@ -1,5 +1,7 @@
 # Half Earth
 
+[![Build Status](https://travis-ci.org/Vizzuality/half-earth.svg?branch=master)](https://travis-ci.org/Vizzuality/half-earth)
+
 TODO: Write a description
 
 ## Installation
