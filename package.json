@@ -1,0 +1,19 @@
+{
+  "name": "half-earth",
+  "version": "1.0.0",
+  "description": "An awesome project",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vizzuality/half-earth.git"
+  },
+  "author": "David Inga <david.inga@vizzuality.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vizzuality/half-earth/issues"
+  },
+  "homepage": "https://github.com/Vizzuality/half-earth#readme"
+}
