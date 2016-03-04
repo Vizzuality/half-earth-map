@@ -1,6 +1,7 @@
 'use strict';
 
 import Vue from 'vue';
+import L from 'leaflet/dist/leaflet';
 
 import Store from '../../store';
 

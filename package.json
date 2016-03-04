@@ -65,8 +65,7 @@
       "beforeEach",
       "before",
       "describe",
-      "it",
-      "L"
+      "it"
     ]
   }
 }
