@@ -1,4 +1,30 @@
+@import '../../settings.css';
+
 .map {
   height: 100%;
   width: 100%;
+
+  .leaflet-control-zoom {
+    margin-right: 20px;
+    margin-bottom: 30px;
+    box-shadow: none;
+    border: 1px solid rgba($color-5, .15);
+    border-radius: 0;
+  }
+
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-in:hover,
+  .leaflet-control-zoom-out,
+  .leaflet-control-zoom-out:hover {
+    width: 36px;
+    height: 36px;
+    line-height: 33px;
+    color: $color-4;
+    border-radius: 0 !important;
+  }
+
+  .leaflet-control-zoom-in {
+    border-bottom: 1px solid rgba($color-4, .1);
+  }
+
 }

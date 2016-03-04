@@ -3,6 +3,7 @@
 import Vue from 'vue';
 
 import LayerControl from '../layer-control';
+import SearchBox from '../search-box';
 
 import logo from '../../../images/half-earth_logo.svg';
 import graph from '../../../images/protected-areas.jpg';
@@ -21,7 +22,8 @@ export default Vue.extend({
   },
 
   components: {
-    'layer-control': LayerControl
+    'layer-control': LayerControl,
+    'search-box': SearchBox
   }
 
 });
