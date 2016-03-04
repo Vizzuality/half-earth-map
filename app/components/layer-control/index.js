@@ -22,12 +22,11 @@ export default Vue.extend({
         },
         {
           name: 'Eco-Regions',
-          active: false
-        },
-        {
-          name: 'Animalia',
           active: '',
           options: [
+            {
+              name: 'Animalia'
+            },
             {
               name: 'Birds'
             },

@@ -9,17 +9,16 @@
   & .layer {
     margin: 0;
     padding: 0;
-    padding-left: 10px;
 
     & .sub-layer {
       margin: 0;
       padding: 0;
       list-style-type: none;
-
-      & > .layer {
-        margin-left: 10px;
-      }
     }
+  }
+
+  & > .layer {
+    padding-left: 10px;
   }
 
 }

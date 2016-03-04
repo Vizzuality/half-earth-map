@@ -45,28 +45,28 @@ export default {
               }
             }
           ]
-        }
-      },
-      {
-        name: 'Animalia',
-        active: '',
-        url: '',
-        request: {
-          layers: [
-            {
-              'user_name': 'simbiotica',
-              'type': 'cartodb',
-              'options': {
-                'sql': 'SELECT * FROM animalia',
-                'cartocss': '#animalia{polygon-opacity: 0.8; line-width: 0.1; line-opacity: 1;} #animalia [ dn = 7] {polygon-fill: #4a1486;line-color: #4a1486;} #animalia [ dn = 6] {polygon-fill: #6a51a3; line-color: #6a51a3;} #animalia [ dn = 5] {polygon-fill: #807dba; line-color: #807dba;} #animalia [ dn = 4] {polygon-fill: #9e9ac8; line-color: #9e9ac8;} #animalia [ dn = 3] {polygon-fill: #bcbddc; line-color: #bcbddc;} #animalia [ dn = 2] {polygon-fill: #dadaeb;line-color:  #dadaeb;} #animalia [ dn = 1] {polygon-fill: #f2f0f7; line-color: #f2f0f7;}',
-                'cartocss_version': '2.3.0',
-                'geom_column': 'the_geom_webmercator',
-                'geom_type': 'geometry'
-              }
-            }
-          ]
         },
         options: [
+          {
+            name: 'Animalia',
+            active: '',
+            url: '',
+            request: {
+              layers: [
+                {
+                  'user_name': 'simbiotica',
+                  'type': 'cartodb',
+                  'options': {
+                    'sql': 'SELECT * FROM animalia',
+                    'cartocss': '#animalia{polygon-opacity: 0.8; line-width: 0.1; line-opacity: 1;} #animalia [ dn = 7] {polygon-fill: #4a1486;line-color: #4a1486;} #animalia [ dn = 6] {polygon-fill: #6a51a3; line-color: #6a51a3;} #animalia [ dn = 5] {polygon-fill: #807dba; line-color: #807dba;} #animalia [ dn = 4] {polygon-fill: #9e9ac8; line-color: #9e9ac8;} #animalia [ dn = 3] {polygon-fill: #bcbddc; line-color: #bcbddc;} #animalia [ dn = 2] {polygon-fill: #dadaeb;line-color:  #dadaeb;} #animalia [ dn = 1] {polygon-fill: #f2f0f7; line-color: #f2f0f7;}',
+                    'cartocss_version': '2.3.0',
+                    'geom_column': 'the_geom_webmercator',
+                    'geom_type': 'geometry'
+                  }
+                }
+              ]
+            }
+          },
           {
             name: 'Birds',
             url: '',

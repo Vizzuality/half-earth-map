@@ -35,7 +35,7 @@ const config = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
       {
         from: '*.*',
