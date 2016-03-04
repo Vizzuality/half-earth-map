@@ -30,7 +30,7 @@ const config = {
       {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
       {test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader'},
       {test: /\.otf$/, loader: 'file-loader?name=fonts/[name].[ext]'},
-      {test: /\.(png|jpg|gif)$/, loader: 'url-loader?prefix=image/&limit=5000&context=./app/images'}
+      {test: /\.(png|jpg|gif|svg)$/, loader: 'url-loader?prefix=image/&limit=5000&context=./app/images'}
     ]
   },
 

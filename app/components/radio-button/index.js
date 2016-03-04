@@ -48,7 +48,9 @@ export default Vue.extend({
   methods: {
 
     onClick() {
-      if(!this.hasChanged) this.model = '';
+      if (!this.hasChanged) {
+        this.model = '';
+      }
       this.hasChanged = false;
     }
 

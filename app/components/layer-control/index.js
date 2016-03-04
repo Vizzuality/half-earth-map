@@ -15,9 +15,44 @@ export default Vue.extend({
 
   data() {
     return {
-      layers: Store.state.layers,
-      store: Store
+      layers: [
+        {
+          name: 'Protected Areas',
+          active: false
+        },
+        {
+          name: 'Eco-Regions',
+          active: false
+        },
+        {
+          name: 'Animalia',
+          active: '',
+          options: [
+            {
+              name: 'Birds'
+            },
+            {
+              name: 'Reptilians'
+            },
+            {
+              name: 'Mammals'
+            },
+            {
+              name: 'Amphibians'
+            }
+          ]
+        }
+      ]
     };
+  },
+
+  watch: {
+    layers: {
+      handler() {
+        Store.updateLayers(this.layers);
+      },
+      deep: true
+    }
   },
 
   components: {
