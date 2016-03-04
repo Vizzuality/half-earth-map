@@ -1,0 +1,13 @@
+<div class="radio-button">
+  <input
+    class="input"
+    type="radio"
+    id="{{id}}"
+    value="{{name}}"
+    v-model="model"
+    @click="onClick"/>
+  <label :class="[ 'label', this.labelClass ? labelClass : '' ]" for="{{id}}">
+    {{name}}
+  </label>
+  <hr>
+</div>

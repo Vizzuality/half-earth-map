@@ -1,0 +1,25 @@
+<ul class="layer-control">
+  <li class="layer" v-for="layer in layers">
+    <div v-if="!layer.options">
+      <checkbox
+        :name="layer.name"
+        :model.sync="layer.active">
+      </checkbox>
+    </div>
+    <div v-else>
+      <radio-button
+        :name="layer.name"
+        :model.sync="layer.active">
+      </radio-button>
+      <ul class="sub-layer">
+        <li class="layer" v-for="option in layer.options">
+          <radio-button
+            :name="option.name"
+            label-class="-secondary"
+            :model.sync="layer.active">
+          </radio-button>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>

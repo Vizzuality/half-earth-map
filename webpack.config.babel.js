@@ -4,6 +4,8 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import nested from 'postcss-nested';
 import importCSS from 'postcss-import';
+import simpleVars from 'postcss-simple-vars';
+import hexRgba from 'postcss-hexrgba';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import path from 'path';
 
@@ -24,9 +26,10 @@ const config = {
 
   module: {
     loaders: [
-      {test: /\.html$/, loader: 'file?name=[name].[ext]'},
+      {test: /\.html$/, loader: 'html-loader'},
       {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
       {test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader'},
+      {test: /\.otf$/, loader: 'file-loader?name=fonts/[name].[ext]'},
       {test: /\.(png|jpg|gif)$/, loader: 'url-loader?prefix=image/&limit=5000&context=./app/images'}
     ]
   },
@@ -43,7 +46,7 @@ const config = {
     ])
   ],
 
-  postcss: () => [importCSS, nested, autoprefixer]
+  postcss: () => [importCSS, nested, simpleVars, hexRgba, autoprefixer]
 
 };
 
