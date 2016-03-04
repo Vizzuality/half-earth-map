@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --hot --progress --colors",
     "build": "./node_modules/.bin/webpack --progress --colors",
-    "publish": "./node_modules/.bin/webpack --progress --colors && ./node_modules/.bin/babel-node publish.js",
+    "publish": "./node_modules/.bin/babel-node ./publish.js",
     "test": "xo"
   },
   "repository": {
