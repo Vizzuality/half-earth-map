@@ -1,5 +1,7 @@
 'use strict';
 
+import L from 'leaflet';
+
 import utils from './utils';
 
 export default {
