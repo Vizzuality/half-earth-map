@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "525832431bdcc9f991e5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "44c441b7a1e7c91d7a33"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -695,7 +695,7 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n    <link rel=\"stylesheet\" href=\"node_modules/leaflet/dist/leaflet.css\" media=\"screen\" charset=\"utf-8\">\n    <title>Half Earth</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n  <body>\n    <div id=\"app\">\n        <map></map>\n        <map-controls></map-controls>\n    </div>\n    <script type=\"text/javascript\" src=\"bundle.js\"></script>\n  </body>\n</html>\n";
+	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n    <link rel=\"stylesheet\" href=\"http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css\">\n    <title>Half Earth</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n  <body>\n    <div id=\"app\">\n        <map></map>\n        <map-controls></map-controls>\n    </div>\n    <script type=\"text/javascript\" src=\"bundle.js\"></script>\n  </body>\n</html>\n";
 
 /***/ },
 /* 4 */
