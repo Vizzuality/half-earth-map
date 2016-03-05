@@ -3,6 +3,7 @@
 import Vue from 'vue';
 
 import Store from '../../store';
+import Actions from '../../actions';
 import Checkbox from '../checkbox';
 import RadioButton from '../radio-button';
 
@@ -13,50 +14,23 @@ export default Vue.extend({
 
   template,
 
-  data() {
-    return {
-      layers: [
-        {
-          name: 'Protected Areas',
-          active: false
-        },
-        {
-          name: 'Eco-Regions',
-          active: '',
-          options: [
-            {
-              name: 'Animalia'
-            },
-            {
-              name: 'Birds'
-            },
-            {
-              name: 'Reptilians'
-            },
-            {
-              name: 'Mammals'
-            },
-            {
-              name: 'Amphibians'
-            }
-          ]
-        }
-      ]
-    };
-  },
-
-  watch: {
-    layers: {
-      handler() {
-        Store.updateLayers(this.layers);
-      },
-      deep: true
+  computed: {
+    layers() {
+      return Store.state.layers;
     }
   },
 
   components: {
     checkbox: Checkbox,
     radioButton: RadioButton
+  },
+
+  methods: {
+    toggleLayer(layer, parentLayer) {
+      return function () {
+        Actions.toggleLayer(layer, parentLayer);
+      };
+    }
   }
 
 });

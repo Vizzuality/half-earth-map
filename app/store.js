@@ -13,6 +13,7 @@ export default {
         name: 'Protected Areas',
         active: false,
         url: '',
+        tileLayer: null,
         request: {
           layers: [
             {
@@ -31,8 +32,9 @@ export default {
       },
       {
         name: 'Eco-Regions',
-        active: false,
+        active: '',
         url: '',
+        tileLayer: null,
         request: {
           layers: [
             {
@@ -51,8 +53,8 @@ export default {
         options: [
           {
             name: 'Animalia',
-            active: '',
             url: '',
+            tileLayer: null,
             request: {
               layers: [
                 {
@@ -72,6 +74,7 @@ export default {
           {
             name: 'Birds',
             url: '',
+            tileLayer: null,
             request: {
               layers: [
                 {
@@ -91,6 +94,7 @@ export default {
           {
             name: 'Reptilians',
             url: '',
+            tileLayer: null,
             request: {
               layers: [
                 {
@@ -110,6 +114,7 @@ export default {
           {
             name: 'Mammals',
             url: '',
+            tileLayer: null,
             request: {
               layers: [
                 {
@@ -129,6 +134,7 @@ export default {
           {
             name: 'Amphibians',
             url: '',
+            tileLayer: null,
             request: {
               layers: [
                 {
@@ -147,59 +153,87 @@ export default {
           }
         ]
       }
-    ],
-
-    tileLayers: {}
+    ]
 
   },
 
-  /* Fill the url attribute of the layer with the layer's tiles url */
-  getLayerTileUrL(layer, map) {
-    utils.$post('https://simbiotica.cartodb.com/api/v1/map/',
-      layer.request, data => {
-        layer.url = `https://simbiotica.cartodb.com/api/v1/map/${data.layergroupid}/{z}/{x}/{y}.png32`;
-        this.state.tileLayers[layer.name] = L.tileLayer(layer.url, {opacity: 0}).addTo(map);
-      });
-  },
+  mutations: {
 
-  updateLayers(layers) {
-    for (let i = 0, j = layers.length; i < j; i++) {
-      const layer = this._searchLayer(layers[i].name, this.state.layers);
+    /* Update the url field of the layer with the url of the tiles and add the
+     * Leaflet tileLayer object on it */
+    LOAD_TILE_LAYER(layer, map) {
+      utils.$post('https://simbiotica.cartodb.com/api/v1/map/',
+        layer.request, data => {
+          layer.url = `https://simbiotica.cartodb.com/api/v1/map/${data.layergroupid}/{z}/{x}/{y}.png32`;
+          layer.tileLayer = L.tileLayer(layer.url, {opacity: 0}).addTo(map);
+        });
+    },
 
-      if (layer) {
-        layer.active = layers[i].active;
-      }
+    /* Toggle the active state of the passed layer. If layer is a sub-layer,
+     * then the parent should be provided in order to toggle its active state
+     * (which is shared with the sub-layers). */
+    TOGGLE_LAYER(layer, parentLayer) {
+      /* We're updating a parent layer (which has sub-layers) */
+      if (layer.options) {
+        const oldActiveLayerName = layer.active;
+        layer.active = oldActiveLayerName === layer.name ? '' : layer.name;
 
-      if (layers[i].options) {
-        for (let k = 0, l = layers[i].options.length; k < l; k++) {
-          const subLayer = this._searchLayer(layers[i].options[k].name, this.state.layers);
-
-          if (subLayer) {
-            subLayer.active = layers[i].options[k].active;
+        /* Case of a radio button, we eventually need to update the visibility
+         * of two layers */
+        if (!oldActiveLayerName) {
+          this.SET_LAYER_OPACITY(layer, 1);
+        } else if (oldActiveLayerName === layer.name) {
+          this.SET_LAYER_OPACITY(layer, 0);
+        } else {
+          this.SET_LAYER_OPACITY(layer, 1);
+          for (let i = 0, j = layer.options.length; i < j; i++) {
+            if (layer.options[i].name === oldActiveLayerName) {
+              this.SET_LAYER_OPACITY(layer.options[i], 0);
+              break;
+            }
           }
         }
-      }
-    }
-  },
 
-  _searchLayer(layerName, layers) {
-    for (let i = 0, j = layers.length; i < j; i++) {
-      const layer = layers[i];
+      /* We're updating a sub-layer */
+      } else if (!layer.hasOwnProperty('active') && parentLayer) {
+        const oldActiveLayerName = parentLayer.active;
+        parentLayer.active = oldActiveLayerName === layer.name ? '' :
+          layer.name;
 
-      if (layer.name === layerName) {
-        return layer;
-      }
-
-      if (layer.options) {
-        const subLayer = this._searchLayer(layerName, layer.options);
-
-        if (subLayer) {
-          return subLayer;
+        /* Case of a radio button, we eventually need to update the visibility
+         * of two layers */
+        if (!oldActiveLayerName) {
+          this.SET_LAYER_OPACITY(layer, 1);
+        } else if (oldActiveLayerName === layer.name) {
+          this.SET_LAYER_OPACITY(layer, 0);
+        } else {
+          this.SET_LAYER_OPACITY(layer, 1);
+          if (oldActiveLayerName === parentLayer.name) {
+            this.SET_LAYER_OPACITY(parentLayer, 0);
+          } else {
+            for (let i = 0, j = parentLayer.options.length; i < j; i++) {
+              if (parentLayer.options[i].name === oldActiveLayerName) {
+                this.SET_LAYER_OPACITY(parentLayer.options[i], 0);
+                break;
+              }
+            }
+          }
         }
+
+      /* We're updating a standard layer */
+      } else {
+        layer.active = !layer.active;
+        this.SET_LAYER_OPACITY(layer, layer.active ? 1 : 0);
+      }
+    },
+
+    /* Update the opacity of the layer to the passed value */
+    SET_LAYER_OPACITY(layer, value) {
+      if (layer.tileLayer) {
+        layer.tileLayer.setOpacity(value);
       }
     }
 
-    return null;
   }
 
 };

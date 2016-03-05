@@ -17,6 +17,16 @@ export default Vue.extend({
     model: {
       type: Boolean,
       required: true
+    },
+    onChange: {
+      type: Function,
+      required: true
+    }
+  },
+
+  watch: {
+    model() {
+      this.onChange();
     }
   },
 

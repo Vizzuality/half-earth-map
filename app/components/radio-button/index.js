@@ -9,12 +9,6 @@ export default Vue.extend({
 
   template,
 
-  data() {
-    return {
-      hasChanged: false
-    };
-  },
-
   props: {
     name: {
       type: String,
@@ -24,36 +18,25 @@ export default Vue.extend({
       type: String,
       required: true
     },
+    onChange: {
+      type: Function,
+      required: true
+    },
     labelClass: {
       type: String
     }
   },
 
   computed: {
-
     id() {
       return this.name.toLowerCase().replace(/(\s|:|\.|;|,)/g, '-');
     }
-
-  },
-
-  watch: {
-
-    model(a, b) {
-      this.hasChanged = a !== b;
-    }
-
   },
 
   methods: {
-
     onClick() {
-      if (!this.hasChanged) {
-        this.model = '';
-      }
-      this.hasChanged = false;
+      this.onChange();
     }
-
   }
 
 });

@@ -4,8 +4,8 @@
     type="radio"
     id="{{id}}"
     value="{{name}}"
-    v-model="model"
-    @click="onClick"/>
+    :checked="name === model"
+    @click="onClick" />
   <label :class="[ 'label', this.labelClass ? labelClass : '' ]" for="{{id}}">
     {{name}}
   </label>

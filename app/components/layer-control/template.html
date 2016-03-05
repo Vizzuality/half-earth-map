@@ -3,19 +3,22 @@
     <div v-if="!layer.options">
       <checkbox
         :name="layer.name"
-        :model.sync="layer.active">
+        :on-change="toggleLayer(layer)"
+        :model="layer.active">
       </checkbox>
     </div>
     <div v-else>
       <radio-button
         :name="layer.name"
-        :model.sync="layer.active">
+        :on-change="toggleLayer(layer)"
+        :model="layer.active">
       </radio-button>
       <ul class="sub-layer">
         <li class="layer" v-for="option in layer.options">
           <radio-button
             :name="option.name"
-            :model.sync="layer.active">
+            :on-change="toggleLayer(option, layer)"
+            :model="layer.active">
           </radio-button>
         </li>
       </ul>
