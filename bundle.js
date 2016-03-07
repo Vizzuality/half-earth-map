@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8480086f328d6ee988df"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a907bff704232b1d716a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -11369,6 +11369,8 @@
 	    };
 
 	    xmlHttpRequest.open('GET', url, true);
+	    xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+	    xmlHttpRequest.setRequestHeader('Accept', 'application/json');
 	    xmlHttpRequest.send();
 	  },
 	  $post: function $post(url, data, callback) {
