@@ -10,8 +10,7 @@
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   background-color: $color-1;
-  box-shadow: 0 5px 15px 0 rgba($color-5, .1);
-	border: solid 1px rgba($color-5, .05);
+  box-shadow: 0 5px 15px 0 rgba($color-5, .1), 0 0 0 1px rgba($color-5, .05);
 
   & > .info {
     display: flex;
