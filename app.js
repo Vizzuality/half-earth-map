@@ -5,6 +5,7 @@ import Vue from 'vue';
 import './app.css';
 import Map from './components/map';
 import MapControls from './components/controls';
+import Legend from './components/legend';
 
 new Vue({
 
@@ -12,7 +13,8 @@ new Vue({
 
   components: {
     'map': Map,
-    'map-controls': MapControls
+    'map-controls': MapControls,
+    'legend': Legend
   }
 
 });

@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5b2fd56954517f2285b4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8480086f328d6ee988df"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -695,7 +695,7 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n    <link rel=\"stylesheet\" href=\"http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css\">\n    <title>Half Earth</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n  <body>\n    <div id=\"app\">\n        <map></map>\n        <map-controls></map-controls>\n    </div>\n    <script type=\"text/javascript\" src=\"bundle.js\"></script>\n  </body>\n</html>\n";
+	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n    <link rel=\"stylesheet\" href=\"http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css\">\n    <title>Half Earth</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n  <body>\n    <div id=\"app\">\n        <map></map>\n        <map-controls></map-controls>\n        <legend></legend>\n    </div>\n    <script type=\"text/javascript\" src=\"bundle.js\"></script>\n  </body>\n</html>\n";
 
 /***/ },
 /* 4 */
@@ -713,9 +713,13 @@
 
 	var _map2 = _interopRequireDefault(_map);
 
-	var _controls = __webpack_require__(23);
+	var _controls = __webpack_require__(24);
 
 	var _controls2 = _interopRequireDefault(_controls);
+
+	var _legend = __webpack_require__(47);
+
+	var _legend2 = _interopRequireDefault(_legend);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -725,7 +729,8 @@
 
 	  components: {
 	    'map': _map2.default,
-	    'map-controls': _controls2.default
+	    'map-controls': _controls2.default,
+	    'legend': _legend2.default
 	  }
 
 	});
@@ -10916,15 +10921,19 @@
 
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 
-	var _store = __webpack_require__(18);
+	var _actions = __webpack_require__(18);
+
+	var _actions2 = _interopRequireDefault(_actions);
+
+	var _store = __webpack_require__(19);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _template = __webpack_require__(20);
+	var _template = __webpack_require__(21);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(21);
+	__webpack_require__(22);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10934,19 +10943,26 @@
 
 	  data: function data() {
 	    return {
-	      layers: _store2.default.state.layers,
-	      tileLayers: _store2.default.state.tileLayers
+	      mapConfig: _store2.default.state.map
 	    };
 	  },
 
 
-	  watch: {
-	    layers: {
-	      handler: function handler() {
-	        this.updateLayers();
-	      },
+	  computed: {
+	    layers: function layers() {
+	      return _store2.default.state.layers;
+	    },
+	    center: function center() {
+	      return this.mapConfig.center;
+	    },
+	    bbox: function bbox() {
+	      return this.mapConfig.bbox;
+	    }
+	  },
 
-	      deep: true
+	  watch: {
+	    bbox: function bbox() {
+	      this.updateBounds();
 	    }
 	  },
 
@@ -10960,15 +10976,24 @@
 	    createMap: function createMap() {
 	      this.map = _leaflet2.default.map(this.$el, {
 	        zoom: 4,
-	        center: [0, 0],
+	        center: this.center,
 	        maxZoom: 19,
 	        zoomControl: false
 	      });
 
-	      _leaflet2.default.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+	      _leaflet2.default.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
 	        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	        subdomains: 'abcd',
-	        maxZoom: 19
+	        maxZoom: 19,
+	        zIndex: 1
+	      }).addTo(this.map);
+
+	      _leaflet2.default.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZW93aWxzb25oYWxmZWFydGgiLCJhIjoiY2lsaHdncXZ0MDA2b3ZqbTRlZXB6MXJxMiJ9.OwV8SPidVX9BQdXdGQMAyg', {
+	        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+	        maxZoom: 18,
+	        id: 'eowilsonhalfearth.9d446e68',
+	        accessToken: 'pk.eyJ1IjoiZW93aWxzb25oYWxmZWFydGgiLCJhIjoiY2lsaHdncXZ0MDA2b3ZqbTRlZXB6MXJxMiJ9.OwV8SPidVX9BQdXdGQMAyg',
+	        zIndex: 10
 	      }).addTo(this.map);
 
 	      _leaflet2.default.control.zoom({ position: 'bottomright' }).addTo(this.map);
@@ -10980,7 +11005,7 @@
 	        var layer = layers[i];
 
 	        if (!layer.url && layer.request) {
-	          _store2.default.getLayerTileUrL(layer, this.map);
+	          _actions2.default.loadTileLayer(layer, this.map);
 	        }
 
 	        if (layer.options) {
@@ -10988,34 +11013,15 @@
 	            var subLayer = layer.options[k];
 
 	            if (!subLayer.url && subLayer.request) {
-	              _store2.default.getLayerTileUrL(subLayer, this.map);
+	              _actions2.default.loadTileLayer(subLayer, this.map);
 	            }
 	          }
 	        }
 	      }
 	    },
-	    updateLayers: function updateLayers() {
-	      for (var i = 0, j = this.layers.length; i < j; i++) {
-	        var layer = this.layers[i];
-
-	        if (this.tileLayers[layer.name]) {
-	          var active = layer.options ? layer.name === layer.active : layer.active;
-
-	          if (this.tileLayers[layer.name]) {
-	            this.tileLayers[layer.name].setOpacity(active ? 1 : 0);
-	          }
-
-	          if (layer.options) {
-	            for (var k = 0, l = layer.options.length; k < l; k++) {
-	              var subLayer = layer.options[k];
-	              active = subLayer.name === layer.active;
-
-	              if (this.tileLayers[subLayer.name]) {
-	                this.tileLayers[subLayer.name].setOpacity(active ? 1 : 0);
-	              }
-	            }
-	          }
-	        }
+	    updateBounds: function updateBounds() {
+	      if (this.bbox.length === 4) {
+	        this.map.fitBounds([[this.bbox[1], this.bbox[0]], [this.bbox[3], this.bbox[2]]]);
 	      }
 	    }
 	  }
@@ -11054,11 +11060,46 @@
 	  value: true
 	});
 
+	var _store = __webpack_require__(19);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	  loadTileLayer: function loadTileLayer(layer, map) {
+	    _store2.default.mutations.LOAD_TILE_LAYER(layer, map);
+	  },
+	  toggleLayer: function toggleLayer(layer, parentLayer) {
+	    _store2.default.mutations.TOGGLE_LAYER(layer, parentLayer);
+	  },
+	  setMapCenter: function setMapCenter(center) {
+	    if (center && center.length === 2) {
+	      _store2.default.mutations.SET_MAP_CENTER(_store2.default, center);
+	    }
+	  },
+	  setMapBBox: function setMapBBox(bbox) {
+	    if (bbox && bbox.length === 4) {
+	      _store2.default.mutations.SET_MAP_BBOX(_store2.default, bbox);
+	    }
+	  }
+	};
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _leaflet = __webpack_require__(16);
 
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 
-	var _utils = __webpack_require__(19);
+	var _utils = __webpack_require__(20);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -11068,10 +11109,17 @@
 
 	  state: {
 
+	    map: {
+	      center: [0, 0],
+	      bbox: null
+	    },
+
 	    layers: [{
 	      name: 'Protected Areas',
+	      zIndex: 5,
 	      active: false,
 	      url: '',
+	      tileLayer: null,
 	      request: {
 	        layers: [{
 	          'user_name': 'simbiotica',
@@ -11087,8 +11135,10 @@
 	      }
 	    }, {
 	      name: 'Eco-Regions',
-	      active: false,
+	      zIndex: 3,
+	      active: '',
 	      url: '',
+	      tileLayer: null,
 	      request: {
 	        layers: [{
 	          'user_name': 'simbiotica',
@@ -11104,8 +11154,9 @@
 	      },
 	      options: [{
 	        name: 'Animalia',
-	        active: '',
+	        zIndex: 3,
 	        url: '',
+	        tileLayer: null,
 	        request: {
 	          layers: [{
 	            'user_name': 'simbiotica',
@@ -11121,7 +11172,9 @@
 	        }
 	      }, {
 	        name: 'Birds',
+	        zIndex: 3,
 	        url: '',
+	        tileLayer: null,
 	        request: {
 	          layers: [{
 	            'user_name': 'simbiotica',
@@ -11137,7 +11190,9 @@
 	        }
 	      }, {
 	        name: 'Reptilians',
+	        zIndex: 3,
 	        url: '',
+	        tileLayer: null,
 	        request: {
 	          layers: [{
 	            'user_name': 'simbiotica',
@@ -11153,7 +11208,9 @@
 	        }
 	      }, {
 	        name: 'Mammals',
+	        zIndex: 3,
 	        url: '',
+	        tileLayer: null,
 	        request: {
 	          layers: [{
 	            'user_name': 'simbiotica',
@@ -11169,7 +11226,9 @@
 	        }
 	      }, {
 	        name: 'Amphibians',
+	        zIndex: 3,
 	        url: '',
+	        tileLayer: null,
 	        request: {
 	          layers: [{
 	            'user_name': 'simbiotica',
@@ -11184,63 +11243,105 @@
 	          }]
 	        }
 	      }]
-	    }],
-
-	    tileLayers: {}
+	    }]
 
 	  },
 
-	  /* Fill the url attribute of the layer with the layer's tiles url */
-	  getLayerTileUrL: function getLayerTileUrL(layer, map) {
-	    var _this = this;
+	  mutations: {
 
-	    _utils2.default.$post('https://simbiotica.cartodb.com/api/v1/map/', layer.request, function (data) {
-	      layer.url = 'https://simbiotica.cartodb.com/api/v1/map/' + data.layergroupid + '/{z}/{x}/{y}.png32';
-	      _this.state.tileLayers[layer.name] = _leaflet2.default.tileLayer(layer.url, { opacity: 0 }).addTo(map);
-	    });
-	  },
-	  updateLayers: function updateLayers(layers) {
-	    for (var i = 0, j = layers.length; i < j; i++) {
-	      var layer = this._searchLayer(layers[i].name, this.state.layers);
+	    /* Update the url field of the layer with the url of the tiles and add the
+	     * Leaflet tileLayer object on it */
 
-	      if (layer) {
-	        layer.active = layers[i].active;
-	      }
+	    LOAD_TILE_LAYER: function LOAD_TILE_LAYER(layer, map) {
+	      _utils2.default.$post('https://simbiotica.cartodb.com/api/v1/map/', layer.request, function (data) {
+	        layer.url = 'https://simbiotica.cartodb.com/api/v1/map/' + data.layergroupid + '/{z}/{x}/{y}.png32';
+	        layer.tileLayer = _leaflet2.default.tileLayer(layer.url, { opacity: 0, zIndex: layer.zIndex }).addTo(map);
+	      });
+	    },
 
-	      if (layers[i].options) {
-	        for (var k = 0, l = layers[i].options.length; k < l; k++) {
-	          var subLayer = this._searchLayer(layers[i].options[k].name, this.state.layers);
 
-	          if (subLayer) {
-	            subLayer.active = layers[i].options[k].active;
+	    /* Toggle the active state of the passed layer. If layer is a sub-layer,
+	     * then the parent should be provided in order to toggle its active state
+	     * (which is shared with the sub-layers). */
+	    TOGGLE_LAYER: function TOGGLE_LAYER(layer, parentLayer) {
+	      /* We're updating a parent layer (which has sub-layers) */
+	      if (layer.options) {
+	        var oldActiveLayerName = layer.active;
+	        layer.active = oldActiveLayerName === layer.name ? '' : layer.name;
+
+	        /* Case of a radio button, we eventually need to update the visibility
+	         * of two layers */
+	        if (!oldActiveLayerName) {
+	          this.SET_LAYER_OPACITY(layer, 1);
+	        } else if (oldActiveLayerName === layer.name) {
+	          this.SET_LAYER_OPACITY(layer, 0);
+	        } else {
+	          this.SET_LAYER_OPACITY(layer, 1);
+	          for (var i = 0, j = layer.options.length; i < j; i++) {
+	            if (layer.options[i].name === oldActiveLayerName) {
+	              this.SET_LAYER_OPACITY(layer.options[i], 0);
+	              break;
+	            }
 	          }
 	        }
+
+	        /* We're updating a sub-layer */
+	      } else if (!layer.hasOwnProperty('active') && parentLayer) {
+	          var oldActiveLayerName = parentLayer.active;
+	          parentLayer.active = oldActiveLayerName === layer.name ? '' : layer.name;
+
+	          /* Case of a radio button, we eventually need to update the visibility
+	           * of two layers */
+	          if (!oldActiveLayerName) {
+	            this.SET_LAYER_OPACITY(layer, 1);
+	          } else if (oldActiveLayerName === layer.name) {
+	            this.SET_LAYER_OPACITY(layer, 0);
+	          } else {
+	            this.SET_LAYER_OPACITY(layer, 1);
+	            if (oldActiveLayerName === parentLayer.name) {
+	              this.SET_LAYER_OPACITY(parentLayer, 0);
+	            } else {
+	              for (var i = 0, j = parentLayer.options.length; i < j; i++) {
+	                if (parentLayer.options[i].name === oldActiveLayerName) {
+	                  this.SET_LAYER_OPACITY(parentLayer.options[i], 0);
+	                  break;
+	                }
+	              }
+	            }
+	          }
+
+	          /* We're updating a standard layer */
+	        } else {
+	            layer.active = !layer.active;
+	            this.SET_LAYER_OPACITY(layer, layer.active ? 1 : 0);
+	          }
+	    },
+
+
+	    /* Update the opacity of the layer to the passed value */
+	    SET_LAYER_OPACITY: function SET_LAYER_OPACITY(layer, value) {
+	      if (layer.tileLayer) {
+	        layer.tileLayer.setOpacity(value);
 	      }
+	    },
+
+
+	    /* Set the center of the map */
+	    SET_MAP_CENTER: function SET_MAP_CENTER(store, center) {
+	      store.state.map.center = center;
+	    },
+
+
+	    /* Set the bounding box of the map */
+	    SET_MAP_BBOX: function SET_MAP_BBOX(store, bbox) {
+	      store.state.map.bbox = bbox;
 	    }
-	  },
-	  _searchLayer: function _searchLayer(layerName, layers) {
-	    for (var i = 0, j = layers.length; i < j; i++) {
-	      var layer = layers[i];
-
-	      if (layer.name === layerName) {
-	        return layer;
-	      }
-
-	      if (layer.options) {
-	        var subLayer = this._searchLayer(layerName, layer.options);
-
-	        if (subLayer) {
-	          return subLayer;
-	        }
-	      }
-	    }
-
-	    return null;
 	  }
+
 	};
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11249,6 +11350,27 @@
 	  value: true
 	});
 	exports.default = {
+	  $get: function $get(url, callback) {
+	    var xmlHttpRequest = new XMLHttpRequest();
+
+	    xmlHttpRequest.onreadystatechange = function () {
+	      if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
+	        var data = {};
+
+	        try {
+	          data = JSON.parse(xmlHttpRequest.responseText);
+	        } catch (err) {
+	          console.warn(err);
+	          return;
+	        }
+
+	        callback(data);
+	      }
+	    };
+
+	    xmlHttpRequest.open('GET', url, true);
+	    xmlHttpRequest.send();
+	  },
 	  $post: function $post(url, data, callback) {
 	    var xmlHttpRequest = new XMLHttpRequest();
 
@@ -11274,19 +11396,19 @@
 	};
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"map\">\n</div>\n";
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(22);
+	var content = __webpack_require__(23);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -11295,8 +11417,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(22, function() {
-				var newContent = __webpack_require__(22);
+			module.hot.accept(23, function() {
+				var newContent = __webpack_require__(23);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11306,7 +11428,7 @@
 	}
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -11320,7 +11442,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11333,27 +11455,35 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _layerControl = __webpack_require__(24);
+	var _actions = __webpack_require__(18);
+
+	var _actions2 = _interopRequireDefault(_actions);
+
+	var _utils = __webpack_require__(20);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
+	var _layerControl = __webpack_require__(25);
 
 	var _layerControl2 = _interopRequireDefault(_layerControl);
 
-	var _searchBox = __webpack_require__(36);
+	var _searchBox = __webpack_require__(37);
 
 	var _searchBox2 = _interopRequireDefault(_searchBox);
 
-	var _halfEarth_logo = __webpack_require__(40);
+	var _halfEarth_logo = __webpack_require__(42);
 
 	var _halfEarth_logo2 = _interopRequireDefault(_halfEarth_logo);
 
-	var _protectedAreas = __webpack_require__(41);
+	var _protectedAreas = __webpack_require__(43);
 
 	var _protectedAreas2 = _interopRequireDefault(_protectedAreas);
 
-	var _template = __webpack_require__(42);
+	var _template = __webpack_require__(44);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(43);
+	__webpack_require__(45);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11372,85 +11502,18 @@
 	  components: {
 	    'layer-control': _layerControl2.default,
 	    'search-box': _searchBox2.default
-	  }
-
-	});
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vue = __webpack_require__(5);
-
-	var _vue2 = _interopRequireDefault(_vue);
-
-	var _store = __webpack_require__(18);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _checkbox = __webpack_require__(25);
-
-	var _checkbox2 = _interopRequireDefault(_checkbox);
-
-	var _radioButton = __webpack_require__(29);
-
-	var _radioButton2 = _interopRequireDefault(_radioButton);
-
-	var _template = __webpack_require__(33);
-
-	var _template2 = _interopRequireDefault(_template);
-
-	__webpack_require__(34);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _vue2.default.extend({
-
-	  template: _template2.default,
-
-	  data: function data() {
-	    return {
-	      layers: [{
-	        name: 'Protected Areas',
-	        active: false
-	      }, {
-	        name: 'Eco-Regions',
-	        active: '',
-	        options: [{
-	          name: 'Animalia'
-	        }, {
-	          name: 'Birds'
-	        }, {
-	          name: 'Reptilians'
-	        }, {
-	          name: 'Mammals'
-	        }, {
-	          name: 'Amphibians'
-	        }]
-	      }]
-	    };
 	  },
 
-
-	  watch: {
-	    layers: {
-	      handler: function handler() {
-	        _store2.default.updateLayers(this.layers);
-	      },
-
-	      deep: true
+	  methods: {
+	    onSearch: function onSearch(value) {
+	      _utils2.default.$get('https://places.nlp.nokia.com/places/v1/discover/search/?q=' + value + '&app_id=KuYppsdXZznpffJsKT24&app_code=A7tBPacePg9Mj_zghvKt9Q&Accept-Language=en-US&at=0,0', function (data) {
+	        if (data.results && data.results.items && data.results.items.length) {
+	          var info = data.results.items[0];
+	          _actions2.default.setMapCenter(info.position);
+	          _actions2.default.setMapBBox(info.bbox);
+	        }
+	      });
 	    }
-	  },
-
-	  components: {
-	    checkbox: _checkbox2.default,
-	    radioButton: _radioButton2.default
 	  }
 
 	});
@@ -11469,11 +11532,74 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _template = __webpack_require__(26);
+	var _store = __webpack_require__(19);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _actions = __webpack_require__(18);
+
+	var _actions2 = _interopRequireDefault(_actions);
+
+	var _checkbox = __webpack_require__(26);
+
+	var _checkbox2 = _interopRequireDefault(_checkbox);
+
+	var _radioButton = __webpack_require__(30);
+
+	var _radioButton2 = _interopRequireDefault(_radioButton);
+
+	var _template = __webpack_require__(34);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(27);
+	__webpack_require__(35);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _vue2.default.extend({
+
+	  template: _template2.default,
+
+	  computed: {
+	    layers: function layers() {
+	      return _store2.default.state.layers;
+	    }
+	  },
+
+	  components: {
+	    checkbox: _checkbox2.default,
+	    radioButton: _radioButton2.default
+	  },
+
+	  methods: {
+	    toggleLayer: function toggleLayer(layer, parentLayer) {
+	      return function () {
+	        _actions2.default.toggleLayer(layer, parentLayer);
+	      };
+	    }
+	  }
+
+	});
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(5);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _template = __webpack_require__(27);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	__webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11489,6 +11615,16 @@
 	    model: {
 	      type: Boolean,
 	      required: true
+	    },
+	    onChange: {
+	      type: Function,
+	      required: true
+	    }
+	  },
+
+	  watch: {
+	    model: function model() {
+	      this.onChange();
 	    }
 	  },
 
@@ -11501,19 +11637,19 @@
 	});
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"checkbox\">\n  <input class=\"input\" type=\"checkbox\" id=\"{{id}}\" v-model=\"model\" />\n  <label class=\"label\" for=\"{{id}}\">\n    {{name}}\n  </label>\n  <hr>\n</div>\n";
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(28);
+	var content = __webpack_require__(29);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -11522,8 +11658,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(28, function() {
-				var newContent = __webpack_require__(28);
+			module.hot.accept(29, function() {
+				var newContent = __webpack_require__(29);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11533,7 +11669,7 @@
 	}
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -11547,7 +11683,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11560,24 +11696,17 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _template = __webpack_require__(30);
+	var _template = __webpack_require__(31);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(31);
+	__webpack_require__(32);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _vue2.default.extend({
 
 	  template: _template2.default,
-
-	  data: function data() {
-	    return {
-	      hasChanged: false
-	    };
-	  },
-
 
 	  props: {
 	    name: {
@@ -11586,6 +11715,10 @@
 	    },
 	    model: {
 	      type: String,
+	      required: true
+	    },
+	    onChange: {
+	      type: Function,
 	      required: true
 	    },
 	    labelClass: {
@@ -11599,37 +11732,28 @@
 	    }
 	  },
 
-	  watch: {
-	    model: function model(a, b) {
-	      this.hasChanged = a !== b;
-	    }
-	  },
-
 	  methods: {
 	    onClick: function onClick() {
-	      if (!this.hasChanged) {
-	        this.model = '';
-	      }
-	      this.hasChanged = false;
+	      this.onChange();
 	    }
 	  }
 
 	});
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"radio-button\">\n  <input\n    class=\"input\"\n    type=\"radio\"\n    id=\"{{id}}\"\n    value=\"{{name}}\"\n    v-model=\"model\"\n    @click=\"onClick\"/>\n  <label :class=\"[ 'label', this.labelClass ? labelClass : '' ]\" for=\"{{id}}\">\n    {{name}}\n  </label>\n  <hr>\n</div>\n";
+	module.exports = "<div class=\"radio-button\">\n  <input\n    class=\"input\"\n    type=\"radio\"\n    id=\"{{id}}\"\n    value=\"{{name}}\"\n    :checked=\"name === model\"\n    @click=\"onClick\" />\n  <label :class=\"[ 'label', this.labelClass ? labelClass : '' ]\" for=\"{{id}}\">\n    {{name}}\n  </label>\n  <hr>\n</div>\n";
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(32);
+	var content = __webpack_require__(33);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -11638,8 +11762,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(32, function() {
-				var newContent = __webpack_require__(32);
+			module.hot.accept(33, function() {
+				var newContent = __webpack_require__(33);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11649,7 +11773,7 @@
 	}
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -11663,19 +11787,19 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"layer-control\">\n  <li class=\"layer\" v-for=\"layer in layers\">\n    <div v-if=\"!layer.options\">\n      <checkbox\n        :name=\"layer.name\"\n        :model.sync=\"layer.active\">\n      </checkbox>\n    </div>\n    <div v-else>\n      <radio-button\n        :name=\"layer.name\"\n        :model.sync=\"layer.active\">\n      </radio-button>\n      <ul class=\"sub-layer\">\n        <li class=\"layer\" v-for=\"option in layer.options\">\n          <radio-button\n            :name=\"option.name\"\n            :model.sync=\"layer.active\">\n          </radio-button>\n        </li>\n      </ul>\n    </div>\n  </li>\n</ul>\n";
+	module.exports = "<ul class=\"layer-control\">\n  <li class=\"layer\" v-for=\"layer in layers\">\n    <div v-if=\"!layer.options\">\n      <checkbox\n        :name=\"layer.name\"\n        :on-change=\"toggleLayer(layer)\"\n        :model=\"layer.active\">\n      </checkbox>\n    </div>\n    <div v-else>\n      <radio-button\n        :name=\"layer.name\"\n        :on-change=\"toggleLayer(layer)\"\n        :model=\"layer.active\">\n      </radio-button>\n      <ul class=\"sub-layer\">\n        <li class=\"layer\" v-for=\"option in layer.options\">\n          <radio-button\n            :name=\"option.name\"\n            :on-change=\"toggleLayer(option, layer)\"\n            :model=\"layer.active\">\n          </radio-button>\n        </li>\n      </ul>\n    </div>\n  </li>\n</ul>\n";
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(35);
+	var content = __webpack_require__(36);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -11684,8 +11808,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(35, function() {
-				var newContent = __webpack_require__(35);
+			module.hot.accept(36, function() {
+				var newContent = __webpack_require__(36);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11695,7 +11819,7 @@
 	}
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -11703,13 +11827,13 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.layer-control {\n\n  margin: 0;\n  padding: 20px 0 15px 0;\n  list-style-type: none;\n\n}\n\n.layer-control .layer {\n\n  margin: 0;\n\n  padding: 0;\n\n}\n\n.layer-control .layer .sub-layer {\n\n  margin: 0;\n\n  padding: 0;\n\n  list-style-type: none;\n\n}\n\n.layer-control > .layer {\n\n  padding-left: 10px;\n\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.layer-control {\n\n  margin: 0;\n  padding: 20px 0 15px 0;\n  list-style-type: none;\n\n}\n\n.layer-control .layer {\n\n  margin: 0;\n\n  padding: 0;\n\n}\n\n.layer-control .layer .sub-layer {\n\n  margin: 0;\n\n  padding: 0;\n\n  list-style-type: none;\n\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11722,11 +11846,11 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _template = __webpack_require__(37);
+	var _template = __webpack_require__(38);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(38);
+	__webpack_require__(39);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11745,83 +11869,35 @@
 	    placeholder: {
 	      type: String,
 	      required: false
+	    },
+	    callback: {
+	      type: Function,
+	      required: true
+	    }
+	  },
+
+	  methods: {
+	    submit: function submit() {
+	      this.callback(this.value);
 	    }
 	  }
 
 	});
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "<input type=\"text\" v-model=\"value\" />\n";
-
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(39);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(14)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(39, function() {
-				var newContent = __webpack_require__(39);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+	module.exports = "<div class=\"search-box\">\n  <input type=\"text\" :placeholder=\"placeholder\" v-model=\"value\" @keyup.enter=\"submit\" />\n  <button @click=\"submit\">Search</button>\n</div>\n";
 
 /***/ },
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(9)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "", ""]);
-
-	// exports
-
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "de2a177e5dea81fc7a16117657d290bb.svg";
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "148148d08ffb0e63b546c4000dd6b843.jpg";
-
-/***/ },
-/* 42 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"controls\">\n  <a href=\"#\" class=\"logo\">\n    <img :src=\"logo\" alt=\"Half Earth\" />\n  </a>\n  <hr>\n  <img :src=\"graph\" class=\"graph\" alt=\"Graph\" />\n  <hr>\n  <layer-control></layer-control>\n  <!-- <hr>\n  <search-box placeholder=\"Search location\"></search-box> -->\n</div>\n";
-
-/***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(44);
+	var content = __webpack_require__(40);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -11830,8 +11906,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(44, function() {
-				var newContent = __webpack_require__(44);
+			module.hot.accept(40, function() {
+				var newContent = __webpack_require__(40);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -11841,7 +11917,7 @@
 	}
 
 /***/ },
-/* 44 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -11849,7 +11925,177 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 40px;\n  width: 280px;\n  padding: 20px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n\n.controls > .logo {\n  display: block;\n  text-align: center;\n  margin-bottom: 12px;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > hr {\n  width: calc(100% + 2 * 20px);\n  position: relative;\n  left: -20px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.search-box {\n  height: 30px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  border-bottom: 1px solid rgba(82,84,93, .2);\n}\n\n.search-box > input {\n  -webkit-flex-basis: calc(100% - 17px);\n      -ms-flex-preferred-size: calc(100% - 17px);\n          flex-basis: calc(100% - 17px);\n  height: 100%;\n  line-height: 31px;\n  border: none;\n  outline: none;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n}\n\n.search-box > input::-webkit-input-placeholder {\n  color: #222;\n  font-size: 10px;\n  text-transform: uppercase;\n}\n\n.search-box > input:-moz-placeholder {\n  color: #222;\n  font-size: 10px;\n  text-transform: uppercase;\n}\n\n.search-box > input::-moz-placeholder {\n  color: #222;\n  font-size: 10px;\n  text-transform: uppercase;\n}\n\n.search-box > input:-ms-input-placeholder {\n  color: #222;\n  font-size: 10px;\n  text-transform: uppercase;\n}\n\n.search-box > button {\n  -webkit-flex-basis: 12px;\n      -ms-flex-preferred-size: 12px;\n          flex-basis: 12px;\n  text-indent: -100vw;\n  background: none;\n  border: none;\n  background: url(" + __webpack_require__(41) + ") no-repeat center / 12px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABGdBTUEAALGPC/xhBQAAAslJREFUSA21VM9rE0EUnrebSGpqFXvRg0IEQWKhigcFFTzoQRGsJpsG28Yo7UGw4FWrN/EPUEEIQmNqCmZbRSmIt4J6qSBWbespnmpvpVTb1Jid53ubpG7izCKIA8vMfu977837NUL85wUq+8nkxR3lijMAIE6RPELfRoH4FQ3xmhRGxwsjL1V6KqzBASJCPJG6LgTcoHNIpcAYKU0aAL22nZvXceq4UT+w8Vh3agRR3GLjIOAZGHDChA3tba1mS9AUUcOAIYrqOwpxzEF8Gzuf3l3X1+3rEcSsviE2TgaWUcDlJ3ZuVKVkWf0RKcp0ETxMl/jcvjV0IJPJrKq4jLkRcM45LQz4GWe5bT/4silsnAaAeRS4Z3Fp7SrjuuU64ILW06K7uddANptdAkMMMCYlXuH0euXes+ug1i0czz2v0O889jj3gqwWibM9mby0X8etFRl3McHA4DsdUYUjgMuX0nH1VZyaA2hhYTjsaIulUqYISow7Al19FafqgIaIhaWSE1GRdBi1q8ungi/oOFUHAG+Y4CCc1RGbcctKb6PpPkT1K4eCm6ea5fX/mgPMM0DdcI37vC7026Vw7pM8IBAm8vm7yzqu64DfFsrnJA1aKw9ROp3eolNgPB5PDRK3i44VA8ybftxqBMTgt4W2BZ7QbyvyU7w7dbJZkdNCE/9UCrzjykBM2PbwbDPP+08X/73ct6Usn/OEMkrCIrci7SW3oJRzggP0VSj3BkVh8Ps0VsjdZr5qmV5w7uP7xaNHDg6v/XBWSTlKsp308d7JZzJa4UfQhEBCCjlF3XOGIj6+t2Pfz9mZ6VfE+WM1ROCV8vjzhPIQcZ9zK3K3eAt6zurrI4dZ4moj0TrwOvM7xxKpXnohH+qcNKTIz5BONjcz/SHa0VmkSLpU6fpnB+zYz8l6m+pu+Lf4eCH3iNruAtVKUiT9PT2Dbaz7C6SQIY9I6oILAAAAAElFTkSuQmCC"
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "de2a177e5dea81fc7a16117657d290bb.svg";
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "148148d08ffb0e63b546c4000dd6b843.jpg";
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"controls\">\n  <a href=\"#\" class=\"logo\">\n    <img :src=\"logo\" alt=\"Half Earth\" />\n  </a>\n  <hr>\n  <img :src=\"graph\" class=\"graph\" alt=\"Graph\" />\n  <hr>\n  <layer-control></layer-control>\n  <hr>\n  <search-box placeholder=\"Search location\" :callback=\"onSearch\"></search-box>\n</div>\n";
+
+/***/ },
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(46);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(14)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(46, function() {
+				var newContent = __webpack_require__(46);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 40px;\n  width: 280px;\n  padding: 20px 20px 20px 30px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n\n.controls > .logo {\n  display: block;\n  text-align: center;\n  margin-bottom: 12px;\n  position: relative;\n  left: -5px;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > hr {\n  width: calc(100% + 2 * 20px);\n  position: relative;\n  left: -20px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(5);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _store = __webpack_require__(19);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _template = __webpack_require__(48);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	__webpack_require__(49);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _vue2.default.extend({
+
+	  template: _template2.default,
+
+	  computed: {
+	    layers: function layers() {
+	      return _store2.default.state.layers;
+	    },
+	    activeLayers: function activeLayers() {
+	      var res = [];
+
+	      for (var i = 0, j = this.layers.length; i < j; i++) {
+	        var layer = this.layers[i];
+
+	        if (!layer.options && layer.active || layer.options && layer.active === layer.name) {
+	          res.push(layer);
+	        }
+
+	        if (layer.options && layer.active !== layer.name) {
+	          for (var k = 0, l = layer.options.length; k < l; k++) {
+	            if (layer.options[k].name === layer.active) {
+	              res.push(layer.options[k]);
+	              break;
+	            }
+	          }
+	        }
+	      }
+
+	      return res;
+	    }
+	  }
+
+	});
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"legend\" v-if=\"activeLayers.length\">\n  <template v-for=\"layer in activeLayers\">\n    {{layer.name}}\n  </template>\n</div>\n";
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(50);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(14)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(50, function() {
+				var newContent = __webpack_require__(50);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.legend {\n  position: absolute;\n  bottom: 30px;\n  left: 40px;\n  width: 200px;\n  padding: 20px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n", ""]);
 
 	// exports
 

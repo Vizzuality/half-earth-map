@@ -1,4 +1,26 @@
 export default {
+  $get(url, callback) {
+    const xmlHttpRequest = new XMLHttpRequest();
+
+    xmlHttpRequest.onreadystatechange = () => {
+      if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
+        let data = {};
+
+        try {
+          data = JSON.parse(xmlHttpRequest.responseText);
+        } catch (err) {
+          console.warn(err);
+          return;
+        }
+
+        callback(data);
+      }
+    };
+
+    xmlHttpRequest.open('GET', url, true);
+    xmlHttpRequest.send();
+  },
+
   $post(url, data, callback) {
     const xmlHttpRequest = new XMLHttpRequest();
 
