@@ -11,6 +11,7 @@ export default {
     layers: [
       {
         name: 'Protected Areas',
+        zIndex: 1,
         active: false,
         url: '',
         tileLayer: null,
@@ -165,7 +166,7 @@ export default {
       utils.$post('https://simbiotica.cartodb.com/api/v1/map/',
         layer.request, data => {
           layer.url = `https://simbiotica.cartodb.com/api/v1/map/${data.layergroupid}/{z}/{x}/{y}.png32`;
-          layer.tileLayer = L.tileLayer(layer.url, {opacity: 0}).addTo(map);
+          layer.tileLayer = L.tileLayer(layer.url, {opacity: 0, zIndex: layer.zIndex}).addTo(map);
         });
     },
 
