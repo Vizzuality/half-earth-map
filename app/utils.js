@@ -18,6 +18,8 @@ export default {
     };
 
     xmlHttpRequest.open('GET', url, true);
+    xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    xmlHttpRequest.setRequestHeader('Accept', 'application/json')
     xmlHttpRequest.send();
   },
 
