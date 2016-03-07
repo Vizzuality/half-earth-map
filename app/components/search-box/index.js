@@ -19,6 +19,16 @@ export default Vue.extend({
     placeholder: {
       type: String,
       required: false
+    },
+    callback: {
+      type: Function,
+      required: true
+    }
+  },
+
+  methods: {
+    submit() {
+      this.callback(this.value);
     }
   }
 

@@ -13,9 +13,27 @@ export default Vue.extend({
 
   template,
 
+  data() {
+    return {
+      mapConfig: Store.state.map
+    };
+  },
+
   computed: {
     layers() {
       return Store.state.layers;
+    },
+    center() {
+      return this.mapConfig.center;
+    },
+    bbox() {
+      return this.mapConfig.bbox;
+    }
+  },
+
+  watch: {
+    bbox() {
+      this.updateBounds();
     }
   },
 
@@ -29,7 +47,7 @@ export default Vue.extend({
     createMap() {
       this.map = L.map(this.$el, {
         zoom: 4,
-        center: [0, 0],
+        center: this.center,
         maxZoom: 19,
         zoomControl: false
       });
@@ -62,6 +80,15 @@ export default Vue.extend({
             }
           }
         }
+      }
+    },
+
+    updateBounds() {
+      if (this.bbox.length === 4) {
+        this.map.fitBounds([
+          [this.bbox[1], this.bbox[0]],
+          [this.bbox[3], this.bbox[2]]
+        ]);
       }
     }
 

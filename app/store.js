@@ -8,6 +8,11 @@ export default {
 
   state: {
 
+    map: {
+      center: [0, 0],
+      bbox: null
+    },
+
     layers: [
       {
         name: 'Protected Areas',
@@ -233,6 +238,16 @@ export default {
       if (layer.tileLayer) {
         layer.tileLayer.setOpacity(value);
       }
+    },
+
+    /* Set the center of the map */
+    SET_MAP_CENTER(store, center) {
+      store.state.map.center = center;
+    },
+
+    /* Set the bounding box of the map */
+    SET_MAP_BBOX(store, bbox) {
+      store.state.map.bbox = bbox;
     }
 
   }
