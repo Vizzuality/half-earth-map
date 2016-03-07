@@ -16,7 +16,7 @@ export default {
     layers: [
       {
         name: 'Protected Areas',
-        zIndex: 1,
+        zIndex: 5,
         active: false,
         url: '',
         tileLayer: null,
@@ -38,6 +38,7 @@ export default {
       },
       {
         name: 'Eco-Regions',
+        zIndex: 3,
         active: '',
         url: '',
         tileLayer: null,
@@ -59,6 +60,7 @@ export default {
         options: [
           {
             name: 'Animalia',
+            zIndex: 3,
             url: '',
             tileLayer: null,
             request: {
@@ -79,6 +81,7 @@ export default {
           },
           {
             name: 'Birds',
+            zIndex: 3,
             url: '',
             tileLayer: null,
             request: {
@@ -99,6 +102,7 @@ export default {
           },
           {
             name: 'Reptilians',
+            zIndex: 3,
             url: '',
             tileLayer: null,
             request: {
@@ -119,6 +123,7 @@ export default {
           },
           {
             name: 'Mammals',
+            zIndex: 3,
             url: '',
             tileLayer: null,
             request: {
@@ -139,6 +144,7 @@ export default {
           },
           {
             name: 'Amphibians',
+            zIndex: 3,
             url: '',
             tileLayer: null,
             request: {
