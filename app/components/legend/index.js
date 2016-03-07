@@ -2,6 +2,7 @@
 
 import Vue from 'vue';
 
+import Actions from '../../actions';
 import Store from '../../store';
 
 import template from './template.html';
@@ -38,6 +39,14 @@ export default Vue.extend({
 
       return res;
     }
+  },
+
+  methods: {
+
+    openModal(layer) {
+      Actions.openModal(layer);
+    }
+
   }
 
 });

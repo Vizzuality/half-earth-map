@@ -1,0 +1,88 @@
+@import '../../settings.css';
+
+.modal-mask {
+  position: fixed;
+  z-index: 1000000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color-5, .2);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  position: relative;
+  width: 700px;
+  max-width: calc(100% - 40px);
+  margin: 0px auto;
+  padding: 50px 50px 70px 50px;
+  background-color: $color-1;
+  box-shadow: 0 5px 15px 0 rgba($color-5, .1), 0 0 0 1px rgba($color-5, .05);
+  transition: all .3s ease;
+
+  & > h1 {
+    color: $color-8;
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  & > p {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  & a {
+    color: $color-8;
+    text-decoration: none;
+  }
+
+  & > .ok-button {
+    border: none;
+    background-color: $color-8;
+    height: 48px;
+    width: 66px;
+    font-size: 13px;
+    color: $color-1;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+  }
+
+  & > .close-button {
+    position: absolute;
+    top: -18px;
+    right: 0;
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+  }
+}
+
+/*
+ * the following styles are auto-applied to elements with
+ * v-transition="modal" when their visiblity is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter, .modal-leave {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}

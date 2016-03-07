@@ -2,6 +2,7 @@
   <template v-for="layer in activeLayers">
     <div class="info">
       <span class="title">{{layer.name}}</span>
+      <a class="modal-link" @click="openModal(layer)" v-if="layer.attributions">+ Info</a>
       <span class="unit" v-if="layer.unit">{{layer.unit}}</span>
     </div>
     <div class="extent" v-if="layer.extent">

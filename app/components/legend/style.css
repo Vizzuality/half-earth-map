@@ -16,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
+    flex-wrap: wrap;
     margin-bottom: 15px;
 
     &:not(:first-of-type) {
@@ -26,7 +27,15 @@
       font-size: 13px;
     }
 
+    & > .modal-link {
+      color: $color-8;
+      text-align: right;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
     & > .unit {
+      flex-basis: 100%;
       text-align: right;
       font-size: 10px;
       line-height: 20px;

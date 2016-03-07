@@ -14,10 +14,20 @@ export default {
       bbox: null
     },
 
+    modal: {
+      title: 'Test',
+      content: '',
+      active: false
+    },
+
     layers: [
       {
         name: 'Protected Areas',
         zIndex: 5,
+        attributions: {
+          title: 'Protected Areas',
+          content: 'IUCN and UNEP-WCMC (2015), The World Database on Protected Areas (WDPA) [On-line], Cambridge, UK: UNEP-WCMC. Available at: <a href="www.protectedplanet.net" target="_blank">www.protectedplanet.net</a>.'
+        },
         categories: [
           {color: '#3E7BB6', name: 'Protected Area'}
         ],
@@ -43,6 +53,10 @@ export default {
       {
         name: 'Eco-Regions',
         zIndex: 3,
+        attributions: {
+          title: 'Eco-Regions',
+          content: 'World Wildlife Fund. "Terrestrial Ecosystems of the World."'
+        },
         categories: [
           {color: '#007154', name: 'Tropical and subtropical Moist Broadleaf forest'},
           {color: '#bff7e9', name: 'Tropical and subtropical dry broadleaf forest'},
@@ -300,6 +314,18 @@ export default {
     /* Save the map instance */
     REGISTER_MAP(store, map) {
       store.state.map.map = map;
+    },
+
+    /* Open the modal with the content of the layer */
+    OPEN_MODAL(store, layer) {
+      store.state.modal.title = layer.attributions.title;
+      store.state.modal.content = layer.attributions.content;
+      store.state.modal.active = true;
+    },
+
+    /* Close the modal */
+    CLOSE_MODAL(store) {
+      store.state.modal.active = false;
     }
 
   }

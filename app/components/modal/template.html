@@ -1,0 +1,10 @@
+<div class="modal-mask" v-if="active" transition="modal" @click="closeModal">
+  <div class="modal-wrapper">
+    <div class="modal-container">
+      <h1>{{title}}</h1>
+      <p>{{{content}}}</p>
+      <button class="ok-button" @click="closeModal">Ok</button>
+      <img :src="closeButton" class="close-button" alt="Close modal" />
+    </div>
+  </div>
+</div>
