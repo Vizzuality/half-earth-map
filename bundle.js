@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a907bff704232b1d716a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6972c3753e31857949f2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -10564,7 +10564,7 @@
 
 
 	// module
-	exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden],\ntemplate {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active,\na:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb,\nstrong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton,\nselect {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton,\nhtml input[type=\"button\"], /* 1 */\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd,\nth {\n  padding: 0;\n}\n\n/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(10) + ") format('opentype');\n  font-weight: normal;\n}\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(11) + ") format('opentype');\n  font-weight: bold;\n}\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(12) + ") format('opentype');\n  font-style: italic;\n}\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(13) + ") format('opentype');\n  font-weight: bold;\n  font-style: italic;\n}\n\n* {\n  box-sizing: border-box;\n}\n\nhtml {\n  height: 100%;\n  width: 100%;\n}\n\n/* Base styles */\n\nbody {\n  height: 100%;\n  width: 100%;\n\n  line-height: 1.5;\n  color: #333;\n\n  background: white;\n\n  font-family: 'Pier Sans';\n  color: #222;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n#app, #app > .wrapper {\n  height: 100%;\n  width: 100%;\n}\n", ""]);
+	exports.push([module.id, "/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n\nhtml {\n  font-family: sans-serif; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/**\n * Remove default margin.\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n\n[hidden],\ntemplate {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * Remove the gray background color from active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n\na:active,\na:hover {\n  outline: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n\nabbr[title] {\n  border-bottom: 1px dotted;\n}\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n\nb,\nstrong {\n  font-weight: bold;\n}\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Address styling not present in IE 8/9.\n */\n\nmark {\n  background: #ff0;\n  color: #000;\n}\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n\nimg {\n  border: 0;\n}\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * Address differences between Firefox and other browsers.\n */\n\nhr {\n  box-sizing: content-box;\n  height: 0;\n}\n\n/**\n * Contain overflow in all browsers.\n */\n\npre {\n  overflow: auto;\n}\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit; /* 1 */\n  font: inherit; /* 2 */\n  margin: 0; /* 3 */\n}\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n\nbutton {\n  overflow: visible;\n}\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n\nbutton,\nselect {\n  text-transform: none;\n}\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n\nbutton,\nhtml input[type=\"button\"], /* 1 */\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n  cursor: pointer; /* 3 */\n}\n\n/**\n * Re-set default cursor for disabled elements.\n */\n\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default;\n}\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n\ninput {\n  line-height: normal;\n}\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n\ninput[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  box-sizing: content-box; /* 2 */\n}\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Define consistent border, margin, and padding.\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n\nlegend {\n  border: 0; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/* Tables\n   ========================================================================== */\n\n/**\n * Remove most spacing between table cells.\n */\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n\ntd,\nth {\n  padding: 0;\n}\n\n/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(10) + ") format('opentype');\n  font-weight: normal;\n}\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(11) + ") format('opentype');\n  font-weight: bold;\n}\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(12) + ") format('opentype');\n  font-style: italic;\n}\n\n@font-face {\n  font-family: 'Pier Sans';\n  src: url(" + __webpack_require__(13) + ") format('opentype');\n  font-weight: bold;\n  font-style: italic;\n}\n\n* {\n  box-sizing: border-box;\n}\n\nhtml {\n  height: 100%;\n  width: 100%;\n}\n\n/* Base styles */\n\nbody {\n  height: 100%;\n  width: 100%;\n\n  line-height: 1.5;\n  letter-spacing: .3px;\n  color: #333;\n\n  background: white;\n\n  font-family: 'Pier Sans';\n  color: #222;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n#app, #app > .wrapper {\n  height: 100%;\n  width: 100%;\n}\n", ""]);
 
 	// exports
 
@@ -10981,6 +10981,8 @@
 	        zoomControl: false
 	      });
 
+	      _actions2.default.registerMap(this.map);
+
 	      _leaflet2.default.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
 	        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	        subdomains: 'abcd',
@@ -10996,7 +10998,7 @@
 	        zIndex: 10
 	      }).addTo(this.map);
 
-	      _leaflet2.default.control.zoom({ position: 'bottomright' }).addTo(this.map);
+	      _leaflet2.default.control.zoom({ position: 'topright' }).addTo(this.map);
 	    },
 	    loadTiles: function loadTiles() {
 	      var layers = this.layers;
@@ -11005,7 +11007,7 @@
 	        var layer = layers[i];
 
 	        if (!layer.url && layer.request) {
-	          _actions2.default.loadTileLayer(layer, this.map);
+	          _actions2.default.loadTileLayer(layer);
 	        }
 
 	        if (layer.options) {
@@ -11013,7 +11015,7 @@
 	            var subLayer = layer.options[k];
 
 	            if (!subLayer.url && subLayer.request) {
-	              _actions2.default.loadTileLayer(subLayer, this.map);
+	              _actions2.default.loadTileLayer(subLayer);
 	            }
 	          }
 	        }
@@ -11067,11 +11069,14 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
-	  loadTileLayer: function loadTileLayer(layer, map) {
-	    _store2.default.mutations.LOAD_TILE_LAYER(layer, map);
+	  registerMap: function registerMap(map) {
+	    _store2.default.mutations.REGISTER_MAP(_store2.default, map);
+	  },
+	  loadTileLayer: function loadTileLayer(layer) {
+	    _store2.default.mutations.LOAD_TILE_LAYER(_store2.default, layer);
 	  },
 	  toggleLayer: function toggleLayer(layer, parentLayer) {
-	    _store2.default.mutations.TOGGLE_LAYER(layer, parentLayer);
+	    _store2.default.mutations.TOGGLE_LAYER(_store2.default, layer, parentLayer);
 	  },
 	  setMapCenter: function setMapCenter(center) {
 	    if (center && center.length === 2) {
@@ -11110,6 +11115,7 @@
 	  state: {
 
 	    map: {
+	      map: null,
 	      center: [0, 0],
 	      bbox: null
 	    },
@@ -11117,6 +11123,7 @@
 	    layers: [{
 	      name: 'Protected Areas',
 	      zIndex: 5,
+	      categories: [{ color: '#3E7BB6', name: 'Protected Area' }],
 	      active: false,
 	      url: '',
 	      tileLayer: null,
@@ -11136,6 +11143,7 @@
 	    }, {
 	      name: 'Eco-Regions',
 	      zIndex: 3,
+	      categories: [{ color: '#007154', name: 'Tropical and subtropical Moist Broadleaf forest' }, { color: '#bff7e9', name: 'Tropical and subtropical dry broadleaf forest' }, { color: '#01e0a7', name: 'Tropical and subtropical conifers forest' }, { color: '#01a97d', name: 'Temperate broadleaf and mixed forest' }, { color: '#67cfa4', name: 'Temperate conifers forest' }, { color: '#458a6d', name: 'Boreal forest and taiga' }, { color: '#59b5a8', name: 'Tropical and subtropical grasslands, savannas, and shrublands' }, { color: '#d0eae1', name: 'Temperate Grasslands Savannas and shrublands' }, { color: '#2ee9ff', name: 'Flooded grasslands and Savannas' }, { color: '#4390d2', name: 'Flooded grasslands and Savannas' }, { color: '#097a89', name: 'Tundra' }, { color: '#584554', name: 'Mediterranean Forest, woodlands and scrub' }, { color: '#d2f7a8', name: 'Deserts and xeric shrublands' }, { color: '#5860cc', name: 'Mangroves' }, { color: '#eeeeee', name: 'Lakes' }, { color: '#a0a0a0', name: 'Rock and ice' }],
 	      active: '',
 	      url: '',
 	      tileLayer: null,
@@ -11155,6 +11163,9 @@
 	      options: [{
 	        name: 'Animalia',
 	        zIndex: 3,
+	        colorScale: ['#f2f0f7', '#dadaeb', '#bcbddc', '#9e9ac8', '#807dba', '#6a51a3', '#4a1486'],
+	        unit: 'Species / Km²',
+	        extent: [0.5, 821],
 	        url: '',
 	        tileLayer: null,
 	        request: {
@@ -11173,6 +11184,9 @@
 	      }, {
 	        name: 'Birds',
 	        zIndex: 3,
+	        colorScale: ['#F1E6F1', '#D8BBD8', '#CCA5CC', '#C08FC0', '#B379B3', '#A05AA0', '#8A4E8A'],
+	        unit: 'Species / Km²',
+	        extent: [0.5, 358],
 	        url: '',
 	        tileLayer: null,
 	        request: {
@@ -11191,6 +11205,9 @@
 	      }, {
 	        name: 'Reptilians',
 	        zIndex: 3,
+	        colorScale: ['#feedde', '#fdd0a2', '#fdae6b', '#fd8d3c', '#f16913', '#d94801', '#8c2d04'],
+	        unit: 'Species / Km²',
+	        extent: [0.5, 47],
 	        url: '',
 	        tileLayer: null,
 	        request: {
@@ -11209,6 +11226,9 @@
 	      }, {
 	        name: 'Mammals',
 	        zIndex: 3,
+	        colorScale: ['#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
+	        unit: 'Species / Km²',
+	        extent: [0.5, 156],
 	        url: '',
 	        tileLayer: null,
 	        request: {
@@ -11217,7 +11237,7 @@
 	            'type': 'cartodb',
 	            'options': {
 	              'sql': 'SELECT * FROM mammalia',
-	              'cartocss': '#mammalia{polygon-opacity: 0.8; line-width: 0.001; line-opacity: 0.8;}#mammalia [ dn = 7] {polygon-fill: #B10026; line-color: #B10026;} #mammalia [ dn = 6] {polygon-fill: #E31A1C; line-color: #E31A1C;} #mammalia [ dn = 5] { polygon-fill: #FC4E2A; line-color: #FC4E2A;} #mammalia [ dn = 4] {polygon-fill: #FD8D3C; line-color: #FD8D3C;} #mammalia [ dn = 3] {polygon-fill: #FEB24C; line-color: #FEB24C;} #mammalia [ dn = 2] {polygon-fill: #FED976; line-color: #FED976;}',
+	              'cartocss': '#mammalia{polygon-opacity: 1; line-width: 0.001; line-opacity: 1;}#mammalia [ dn = 7] {polygon-fill: #B10026; line-color: #B10026;} #mammalia [ dn = 6] {polygon-fill: #E31A1C; line-color: #E31A1C;} #mammalia [ dn = 5] { polygon-fill: #FC4E2A; line-color: #FC4E2A;} #mammalia [ dn = 4] {polygon-fill: #FD8D3C; line-color: #FD8D3C;} #mammalia [ dn = 3] {polygon-fill: #FEB24C; line-color: #FEB24C;} #mammalia [ dn = 2] {polygon-fill: #FED976; line-color: #FED976;} #mammalia [ dn = 1] {polygon-fill: #FFFFB2; line-color: #FFFFB2;}',
 	              'cartocss_version': '2.3.0',
 	              'geom_column': 'the_geom_webmercator',
 	              'geom_type': 'geometry'
@@ -11227,6 +11247,9 @@
 	      }, {
 	        name: 'Amphibians',
 	        zIndex: 3,
+	        colorScale: ['#edf8fb', '#ccece6', '#99d8c9', '#66c2a4', '#41ae76', '#238b45', '#005824'],
+	        unit: 'Species / Km²',
+	        extent: [0.5, 89],
 	        url: '',
 	        tileLayer: null,
 	        request: {
@@ -11252,10 +11275,10 @@
 	    /* Update the url field of the layer with the url of the tiles and add the
 	     * Leaflet tileLayer object on it */
 
-	    LOAD_TILE_LAYER: function LOAD_TILE_LAYER(layer, map) {
+	    LOAD_TILE_LAYER: function LOAD_TILE_LAYER(store, layer) {
 	      _utils2.default.$post('https://simbiotica.cartodb.com/api/v1/map/', layer.request, function (data) {
 	        layer.url = 'https://simbiotica.cartodb.com/api/v1/map/' + data.layergroupid + '/{z}/{x}/{y}.png32';
-	        layer.tileLayer = _leaflet2.default.tileLayer(layer.url, { opacity: 0, zIndex: layer.zIndex }).addTo(map);
+	        layer.tileLayer = _leaflet2.default.tileLayer(layer.url, { zIndex: layer.zIndex });
 	      });
 	    },
 
@@ -11263,7 +11286,7 @@
 	    /* Toggle the active state of the passed layer. If layer is a sub-layer,
 	     * then the parent should be provided in order to toggle its active state
 	     * (which is shared with the sub-layers). */
-	    TOGGLE_LAYER: function TOGGLE_LAYER(layer, parentLayer) {
+	    TOGGLE_LAYER: function TOGGLE_LAYER(store, layer, parentLayer) {
 	      /* We're updating a parent layer (which has sub-layers) */
 	      if (layer.options) {
 	        var oldActiveLayerName = layer.active;
@@ -11272,14 +11295,14 @@
 	        /* Case of a radio button, we eventually need to update the visibility
 	         * of two layers */
 	        if (!oldActiveLayerName) {
-	          this.SET_LAYER_OPACITY(layer, 1);
+	          this.SET_LAYER_VISIBILITY(store, layer, true);
 	        } else if (oldActiveLayerName === layer.name) {
-	          this.SET_LAYER_OPACITY(layer, 0);
+	          this.SET_LAYER_VISIBILITY(store, layer, false);
 	        } else {
-	          this.SET_LAYER_OPACITY(layer, 1);
+	          this.SET_LAYER_VISIBILITY(store, layer, true);
 	          for (var i = 0, j = layer.options.length; i < j; i++) {
 	            if (layer.options[i].name === oldActiveLayerName) {
-	              this.SET_LAYER_OPACITY(layer.options[i], 0);
+	              this.SET_LAYER_VISIBILITY(store, layer.options[i], false);
 	              break;
 	            }
 	          }
@@ -11293,17 +11316,17 @@
 	          /* Case of a radio button, we eventually need to update the visibility
 	           * of two layers */
 	          if (!oldActiveLayerName) {
-	            this.SET_LAYER_OPACITY(layer, 1);
+	            this.SET_LAYER_VISIBILITY(store, layer, true);
 	          } else if (oldActiveLayerName === layer.name) {
-	            this.SET_LAYER_OPACITY(layer, 0);
+	            this.SET_LAYER_VISIBILITY(store, layer, false);
 	          } else {
-	            this.SET_LAYER_OPACITY(layer, 1);
+	            this.SET_LAYER_VISIBILITY(store, layer, true);
 	            if (oldActiveLayerName === parentLayer.name) {
-	              this.SET_LAYER_OPACITY(parentLayer, 0);
+	              this.SET_LAYER_VISIBILITY(store, parentLayer, false);
 	            } else {
 	              for (var i = 0, j = parentLayer.options.length; i < j; i++) {
 	                if (parentLayer.options[i].name === oldActiveLayerName) {
-	                  this.SET_LAYER_OPACITY(parentLayer.options[i], 0);
+	                  this.SET_LAYER_VISIBILITY(store, parentLayer.options[i], false);
 	                  break;
 	                }
 	              }
@@ -11313,15 +11336,19 @@
 	          /* We're updating a standard layer */
 	        } else {
 	            layer.active = !layer.active;
-	            this.SET_LAYER_OPACITY(layer, layer.active ? 1 : 0);
+	            this.SET_LAYER_VISIBILITY(store, layer, layer.active);
 	          }
 	    },
 
 
-	    /* Update the opacity of the layer to the passed value */
-	    SET_LAYER_OPACITY: function SET_LAYER_OPACITY(layer, value) {
-	      if (layer.tileLayer) {
-	        layer.tileLayer.setOpacity(value);
+	    /* Update the visibility of the layer depending on the passed boolean */
+	    SET_LAYER_VISIBILITY: function SET_LAYER_VISIBILITY(store, layer, isVisible) {
+	      if (layer.tileLayer && store.state.map.map) {
+	        if (!isVisible) {
+	          store.state.map.map.removeLayer(layer.tileLayer);
+	        } else {
+	          layer.tileLayer.addTo(store.state.map.map);
+	        }
 	      }
 	    },
 
@@ -11335,6 +11362,12 @@
 	    /* Set the bounding box of the map */
 	    SET_MAP_BBOX: function SET_MAP_BBOX(store, bbox) {
 	      store.state.map.bbox = bbox;
+	    },
+
+
+	    /* Save the map instance */
+	    REGISTER_MAP: function REGISTER_MAP(store, map) {
+	      store.state.map.map = map;
 	    }
 	  }
 
@@ -11438,7 +11471,7 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.map {\n  height: 100%;\n  width: 100%;\n\n}\n\n.map .leaflet-control-zoom {\n  margin-right: 20px;\n  margin-bottom: 30px;\n  box-shadow: none;\n  border: 1px solid rgba(0,0,0, .15);\n  border-radius: 0;\n\n}\n\n.map .leaflet-control-zoom-in,\n  .map .leaflet-control-zoom-in:hover,\n  .map .leaflet-control-zoom-out,\n  .map .leaflet-control-zoom-out:hover {\n  width: 36px;\n  height: 36px;\n  line-height: 33px;\n  color: #222;\n  border-radius: 0 !important;\n\n}\n\n.map .leaflet-control-zoom-in {\n  border-bottom: 1px solid rgba(34,34,34, .1);\n\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.map {\n  height: 100%;\n  width: 100%;\n\n}\n\n.map .leaflet-control-zoom {\n  margin-top: 20px !important;\n  margin-right: 20px;\n  box-shadow: none;\n  border: 1px solid rgba(0,0,0, .15);\n  border-radius: 0;\n\n}\n\n.map .leaflet-control-zoom-in,\n  .map .leaflet-control-zoom-in:hover,\n  .map .leaflet-control-zoom-out,\n  .map .leaflet-control-zoom-out:hover {\n  width: 36px;\n  height: 36px;\n  line-height: 33px;\n  color: #222;\n  border-radius: 0 !important;\n\n}\n\n.map .leaflet-control-zoom-in {\n  border-bottom: 1px solid rgba(34,34,34, .1);\n\n}\n", ""]);
 
 	// exports
 
@@ -11642,7 +11675,7 @@
 /* 27 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"checkbox\">\n  <input class=\"input\" type=\"checkbox\" id=\"{{id}}\" v-model=\"model\" />\n  <label class=\"label\" for=\"{{id}}\">\n    {{name}}\n  </label>\n  <hr>\n</div>\n";
+	module.exports = "<div class=\"checkbox\">\n  <input class=\"input\" type=\"checkbox\" id=\"{{id}}\" v-model=\"model\" />\n  <label class=\"label\" for=\"{{id}}\">\n    {{name}}\n  </label>\n</div>\n";
 
 /***/ },
 /* 28 */
@@ -11679,7 +11712,7 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.checkbox {\n  position: relative;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: end;\n  -webkit-align-items: flex-end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n  padding: 5px 0;\n}\n\n.checkbox > .label {\n  cursor: pointer;\n  text-transform: uppercase;\n  font-size: 13px;\n  background-color: #fff;\n  padding-right: 10px;\n}\n\n.checkbox > .label:after {\n  content: '';\n  position: absolute;\n  bottom: 10px;\n  right: 0;\n  height: 16px;\n  width: 16px;\n  border: 1px solid rgba(82,84,93, .3);\n}\n\n.checkbox > .input {\n  display: none;\n}\n\n.checkbox > .input:checked + .label:after {\n  background-color: #6db54d;\n  border: 1px solid #6db54d;\n}\n\n.checkbox > hr {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  position: relative;\n  bottom: -2px;\n  margin-right: 26px;\n  border: none;\n  border-top: 1px solid rgba(82,84,93, .1);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.checkbox {\n  position: relative;\n  padding: 5px 0;\n}\n\n.checkbox > .label {\n  cursor: pointer;\n  text-transform: uppercase;\n  font-size: 13px;\n  background-color: #fff;\n  padding-left: 25px;\n}\n\n.checkbox > .label:before {\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 0px;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  height: 10px;\n  width: 15px;\n  background-color: #bfbfbf;\n  border-radius: 5px;\n  -webkit-transition: background-color .3s;\n  transition: background-color .3s;\n}\n\n.checkbox > .label:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 1px;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  height: 8px;\n  width: 8px;\n  border-radius: 100%;\n  background-color: #fff;\n  -webkit-transition: left .3s;\n  transition: left .3s;\n}\n\n.checkbox > .input {\n  display: none;\n}\n\n.checkbox > .input:checked + .label:before {\n  background-color: #6db54d;\n}\n\n.checkbox > .input:checked + .label:after {\n  left: 6px;\n}\n", ""]);
 
 	// exports
 
@@ -11746,7 +11779,7 @@
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"radio-button\">\n  <input\n    class=\"input\"\n    type=\"radio\"\n    id=\"{{id}}\"\n    value=\"{{name}}\"\n    :checked=\"name === model\"\n    @click=\"onClick\" />\n  <label :class=\"[ 'label', this.labelClass ? labelClass : '' ]\" for=\"{{id}}\">\n    {{name}}\n  </label>\n  <hr>\n</div>\n";
+	module.exports = "<div class=\"radio-button\">\n  <input\n    class=\"input\"\n    type=\"radio\"\n    id=\"{{id}}\"\n    value=\"{{name}}\"\n    :checked=\"name === model\"\n    @click=\"onClick\" />\n  <label :class=\"[ 'label', this.labelClass ? labelClass : '' ]\" for=\"{{id}}\">\n    {{name}}\n  </label>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -11783,7 +11816,7 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.radio-button {\n  position: relative;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: end;\n  -webkit-align-items: flex-end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n  padding: 5px 0;\n}\n\n.radio-button > .label {\n  cursor: pointer;\n  text-transform: uppercase;\n  font-size: 13px;\n  padding-right: 10px;\n}\n\n.radio-button > .label.-secondary {\n  text-transform: capitalize;\n}\n\n.radio-button > .label:after {\n  content: '';\n  position: absolute;\n  bottom: 10px;\n  right: 0;\n  height: 16px;\n  width: 16px;\n  border: 1px solid rgba(82,84,93, .3);\n  border-radius: 100%;\n}\n\n.radio-button > .input {\n  display: none;\n}\n\n.radio-button > .input:checked + .label:after {\n  background-color: #6db54d;\n  border: 1px solid #6db54d;\n}\n\n.radio-button > hr {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  position: relative;\n  bottom: -2px;\n  margin-right: 26px;\n  border: none;\n  border-top: 1px solid rgba(82,84,93, .1);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.radio-button {\n  position: relative;\n  padding: 5px 0;\n}\n\n.radio-button > .label {\n  cursor: pointer;\n  text-transform: uppercase;\n  font-size: 13px;\n  padding-left: 25px;\n}\n\n.radio-button > .label.-secondary {\n  text-transform: capitalize;\n}\n\n.radio-button > .label:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 0;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  height: 8px;\n  width: 8px;\n  border: 1px solid rgba(82,84,93, .3);\n  border-radius: 100%;\n}\n\n.radio-button > .input {\n  display: none;\n}\n\n.radio-button > .input:checked + .label:after {\n  background-color: #6db54d;\n  border: 1px solid #6db54d;\n}\n", ""]);
 
 	// exports
 
@@ -11991,7 +12024,7 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 40px;\n  width: 280px;\n  padding: 20px 20px 20px 30px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n\n.controls > .logo {\n  display: block;\n  text-align: center;\n  margin-bottom: 12px;\n  position: relative;\n  left: -5px;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > hr {\n  width: calc(100% + 2 * 20px);\n  position: relative;\n  left: -20px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  padding: 20px 20px 20px 30px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n\n.controls > .logo {\n  display: block;\n  text-align: center;\n  margin-bottom: 12px;\n  position: relative;\n  left: -5px;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > hr {\n  width: calc(100% + 2 * 20px);\n  position: relative;\n  left: -20px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n", ""]);
 
 	// exports
 
@@ -12060,7 +12093,7 @@
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"legend\" v-if=\"activeLayers.length\">\n  <template v-for=\"layer in activeLayers\">\n    {{layer.name}}\n  </template>\n</div>\n";
+	module.exports = "<div class=\"legend\" v-if=\"activeLayers.length\">\n  <template v-for=\"layer in activeLayers\">\n    <div class=\"info\">\n      <span class=\"title\">{{layer.name}}</span>\n      <span class=\"unit\" v-if=\"layer.unit\">{{layer.unit}}</span>\n    </div>\n    <div class=\"extent\" v-if=\"layer.extent\">\n      <span>{{layer.extent[0]}}</span>\n      <span>{{layer.extent[1]}}</span>\n    </div>\n    <div class=\"scale\" v-if=\"layer.colorScale\">\n      <div :style=\"'background-color:'+color+';'\" v-for=\"color in layer.colorScale\">\n      </div>\n    </div>\n    <ul class=\"categories\" v-if=\"layer.categories\">\n      <li class=\"category\" v-for=\"category in layer.categories\">\n        <span class=\"color\" :style=\"'background-color:'+category.color+';'\"></span>\n        <span class=\"title\">{{category.name}}</span>\n      </li>\n    </ul>\n  </template>\n</div>\n";
 
 /***/ },
 /* 49 */
@@ -12097,7 +12130,7 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.legend {\n  position: absolute;\n  bottom: 30px;\n  left: 40px;\n  width: 200px;\n  padding: 20px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.legend {\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n  width: 250px;\n  padding: 20px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n\n.legend > .info {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  text-transform: uppercase;\n  margin-bottom: 15px;\n}\n\n.legend > .info:not(:first-of-type) {\n  margin-top: 20px;\n}\n\n.legend > .info > .title {\n  font-size: 13px;\n}\n\n.legend > .info > .unit {\n  text-align: right;\n  font-size: 10px;\n  line-height: 20px;\n}\n\n.legend > .extent {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  font-size: 10px;\n}\n\n.legend > .scale {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  height: 20px;\n}\n\n.legend > .scale > div {\n  height: 100%;\n  -webkit-flex-basis: 100%;\n      -ms-flex-preferred-size: 100%;\n          flex-basis: 100%;\n}\n\n.legend > .categories {\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n}\n\n.legend > .categories > .category {\n  margin: 5px 0;\n  padding: 0;\n  line-height: 15px;\n  font-size: 10px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.legend > .categories > .category > .color {\n  -webkit-flex-basis: 10px;\n      -ms-flex-preferred-size: 10px;\n          flex-basis: 10px;\n  height: 10px;\n  margin-right: 5px;\n  vertical-align: text-bottom;\n}\n\n.legend > .categories > .category > .title {\n  -webkit-flex-basis: calc(100% - 20px);\n      -ms-flex-preferred-size: calc(100% - 20px);\n          flex-basis: calc(100% - 20px);\n}\n", ""]);
 
 	// exports
 
