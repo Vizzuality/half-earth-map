@@ -3,7 +3,7 @@
 .controls {
   position: absolute;
   top: 0;
-  left: 40px;
+  left: 20px;
   width: 280px;
   padding: 20px 20px 20px 30px;
   background-color: $color-1;

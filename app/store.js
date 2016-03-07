@@ -9,6 +9,7 @@ export default {
   state: {
 
     map: {
+      map: null,
       center: [0, 0],
       bbox: null
     },
@@ -17,6 +18,9 @@ export default {
       {
         name: 'Protected Areas',
         zIndex: 5,
+        categories: [
+          {color: '#3E7BB6', name: 'Protected Area'}
+        ],
         active: false,
         url: '',
         tileLayer: null,
@@ -39,6 +43,24 @@ export default {
       {
         name: 'Eco-Regions',
         zIndex: 3,
+        categories: [
+          {color: '#007154', name: 'Tropical and subtropical Moist Broadleaf forest'},
+          {color: '#bff7e9', name: 'Tropical and subtropical dry broadleaf forest'},
+          {color: '#01e0a7', name: 'Tropical and subtropical conifers forest'},
+          {color: '#01a97d', name: 'Temperate broadleaf and mixed forest'},
+          {color: '#67cfa4', name: 'Temperate conifers forest'},
+          {color: '#458a6d', name: 'Boreal forest and taiga'},
+          {color: '#59b5a8', name: 'Tropical and subtropical grasslands, savannas, and shrublands'},
+          {color: '#d0eae1', name: 'Temperate Grasslands Savannas and shrublands'},
+          {color: '#2ee9ff', name: 'Flooded grasslands and Savannas'},
+          {color: '#4390d2', name: 'Flooded grasslands and Savannas'},
+          {color: '#097a89', name: 'Tundra'},
+          {color: '#584554', name: 'Mediterranean Forest, woodlands and scrub'},
+          {color: '#d2f7a8', name: 'Deserts and xeric shrublands'},
+          {color: '#5860cc', name: 'Mangroves'},
+          {color: '#eeeeee', name: 'Lakes'},
+          {color: '#a0a0a0', name: 'Rock and ice'}
+        ],
         active: '',
         url: '',
         tileLayer: null,
@@ -61,6 +83,9 @@ export default {
           {
             name: 'Animalia',
             zIndex: 3,
+            colorScale: ['#f2f0f7', '#dadaeb', '#bcbddc', '#9e9ac8', '#807dba', '#6a51a3', '#4a1486'],
+            unit: 'Species / Km²',
+            extent: [0.5, 821],
             url: '',
             tileLayer: null,
             request: {
@@ -82,6 +107,9 @@ export default {
           {
             name: 'Birds',
             zIndex: 3,
+            colorScale: ['#F1E6F1', '#D8BBD8', '#CCA5CC', '#C08FC0', '#B379B3', '#A05AA0', '#8A4E8A'],
+            unit: 'Species / Km²',
+            extent: [0.5, 358],
             url: '',
             tileLayer: null,
             request: {
@@ -103,6 +131,9 @@ export default {
           {
             name: 'Reptilians',
             zIndex: 3,
+            colorScale: ['#feedde', '#fdd0a2', '#fdae6b', '#fd8d3c', '#f16913', '#d94801', '#8c2d04'],
+            unit: 'Species / Km²',
+            extent: [0.5, 47],
             url: '',
             tileLayer: null,
             request: {
@@ -124,6 +155,9 @@ export default {
           {
             name: 'Mammals',
             zIndex: 3,
+            colorScale: ['#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
+            unit: 'Species / Km²',
+            extent: [0.5, 156],
             url: '',
             tileLayer: null,
             request: {
@@ -133,7 +167,7 @@ export default {
                   'type': 'cartodb',
                   'options': {
                     'sql': 'SELECT * FROM mammalia',
-                    'cartocss': '#mammalia{polygon-opacity: 0.8; line-width: 0.001; line-opacity: 0.8;}#mammalia [ dn = 7] {polygon-fill: #B10026; line-color: #B10026;} #mammalia [ dn = 6] {polygon-fill: #E31A1C; line-color: #E31A1C;} #mammalia [ dn = 5] { polygon-fill: #FC4E2A; line-color: #FC4E2A;} #mammalia [ dn = 4] {polygon-fill: #FD8D3C; line-color: #FD8D3C;} #mammalia [ dn = 3] {polygon-fill: #FEB24C; line-color: #FEB24C;} #mammalia [ dn = 2] {polygon-fill: #FED976; line-color: #FED976;}',
+                    'cartocss': '#mammalia{polygon-opacity: 1; line-width: 0.001; line-opacity: 1;}#mammalia [ dn = 7] {polygon-fill: #B10026; line-color: #B10026;} #mammalia [ dn = 6] {polygon-fill: #E31A1C; line-color: #E31A1C;} #mammalia [ dn = 5] { polygon-fill: #FC4E2A; line-color: #FC4E2A;} #mammalia [ dn = 4] {polygon-fill: #FD8D3C; line-color: #FD8D3C;} #mammalia [ dn = 3] {polygon-fill: #FEB24C; line-color: #FEB24C;} #mammalia [ dn = 2] {polygon-fill: #FED976; line-color: #FED976;} #mammalia [ dn = 1] {polygon-fill: #FFFFB2; line-color: #FFFFB2;}',
                     'cartocss_version': '2.3.0',
                     'geom_column': 'the_geom_webmercator',
                     'geom_type': 'geometry'
@@ -145,6 +179,9 @@ export default {
           {
             name: 'Amphibians',
             zIndex: 3,
+            colorScale: ['#edf8fb', '#ccece6', '#99d8c9', '#66c2a4', '#41ae76', '#238b45', '#005824'],
+            unit: 'Species / Km²',
+            extent: [0.5, 89],
             url: '',
             tileLayer: null,
             request: {
@@ -173,18 +210,18 @@ export default {
 
     /* Update the url field of the layer with the url of the tiles and add the
      * Leaflet tileLayer object on it */
-    LOAD_TILE_LAYER(layer, map) {
+    LOAD_TILE_LAYER(store, layer) {
       utils.$post('https://simbiotica.cartodb.com/api/v1/map/',
         layer.request, data => {
           layer.url = `https://simbiotica.cartodb.com/api/v1/map/${data.layergroupid}/{z}/{x}/{y}.png32`;
-          layer.tileLayer = L.tileLayer(layer.url, {opacity: 0, zIndex: layer.zIndex}).addTo(map);
+          layer.tileLayer = L.tileLayer(layer.url, {zIndex: layer.zIndex});
         });
     },
 
     /* Toggle the active state of the passed layer. If layer is a sub-layer,
      * then the parent should be provided in order to toggle its active state
      * (which is shared with the sub-layers). */
-    TOGGLE_LAYER(layer, parentLayer) {
+    TOGGLE_LAYER(store, layer, parentLayer) {
       /* We're updating a parent layer (which has sub-layers) */
       if (layer.options) {
         const oldActiveLayerName = layer.active;
@@ -193,14 +230,14 @@ export default {
         /* Case of a radio button, we eventually need to update the visibility
          * of two layers */
         if (!oldActiveLayerName) {
-          this.SET_LAYER_OPACITY(layer, 1);
+          this.SET_LAYER_VISIBILITY(store, layer, true);
         } else if (oldActiveLayerName === layer.name) {
-          this.SET_LAYER_OPACITY(layer, 0);
+          this.SET_LAYER_VISIBILITY(store, layer, false);
         } else {
-          this.SET_LAYER_OPACITY(layer, 1);
+          this.SET_LAYER_VISIBILITY(store, layer, true);
           for (let i = 0, j = layer.options.length; i < j; i++) {
             if (layer.options[i].name === oldActiveLayerName) {
-              this.SET_LAYER_OPACITY(layer.options[i], 0);
+              this.SET_LAYER_VISIBILITY(store, layer.options[i], false);
               break;
             }
           }
@@ -215,17 +252,17 @@ export default {
         /* Case of a radio button, we eventually need to update the visibility
          * of two layers */
         if (!oldActiveLayerName) {
-          this.SET_LAYER_OPACITY(layer, 1);
+          this.SET_LAYER_VISIBILITY(store, layer, true);
         } else if (oldActiveLayerName === layer.name) {
-          this.SET_LAYER_OPACITY(layer, 0);
+          this.SET_LAYER_VISIBILITY(store, layer, false);
         } else {
-          this.SET_LAYER_OPACITY(layer, 1);
+          this.SET_LAYER_VISIBILITY(store, layer, true);
           if (oldActiveLayerName === parentLayer.name) {
-            this.SET_LAYER_OPACITY(parentLayer, 0);
+            this.SET_LAYER_VISIBILITY(store, parentLayer, false);
           } else {
             for (let i = 0, j = parentLayer.options.length; i < j; i++) {
               if (parentLayer.options[i].name === oldActiveLayerName) {
-                this.SET_LAYER_OPACITY(parentLayer.options[i], 0);
+                this.SET_LAYER_VISIBILITY(store, parentLayer.options[i], false);
                 break;
               }
             }
@@ -235,14 +272,18 @@ export default {
       /* We're updating a standard layer */
       } else {
         layer.active = !layer.active;
-        this.SET_LAYER_OPACITY(layer, layer.active ? 1 : 0);
+        this.SET_LAYER_VISIBILITY(store, layer, layer.active);
       }
     },
 
-    /* Update the opacity of the layer to the passed value */
-    SET_LAYER_OPACITY(layer, value) {
-      if (layer.tileLayer) {
-        layer.tileLayer.setOpacity(value);
+    /* Update the visibility of the layer depending on the passed boolean */
+    SET_LAYER_VISIBILITY(store, layer, isVisible) {
+      if (layer.tileLayer && store.state.map.map) {
+        if (!isVisible) {
+          store.state.map.map.removeLayer(layer.tileLayer);
+        } else {
+          layer.tileLayer.addTo(store.state.map.map);
+        }
       }
     },
 
@@ -254,6 +295,11 @@ export default {
     /* Set the bounding box of the map */
     SET_MAP_BBOX(store, bbox) {
       store.state.map.bbox = bbox;
+    },
+
+    /* Save the map instance */
+    REGISTER_MAP(store, map) {
+      store.state.map.map = map;
     }
 
   }

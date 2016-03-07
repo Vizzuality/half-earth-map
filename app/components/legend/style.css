@@ -2,11 +2,76 @@
 
 .legend {
   position: absolute;
-  bottom: 30px;
-  left: 40px;
-  width: 200px;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
   padding: 20px;
   background-color: $color-1;
   box-shadow: 0 5px 15px 0 rgba($color-5, .1);
 	border: solid 1px rgba($color-5, .05);
+
+  & > .info {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+
+    &:not(:first-of-type) {
+      margin-top: 20px;
+    }
+
+    & > .title {
+      font-size: 13px;
+    }
+
+    & > .unit {
+      text-align: right;
+      font-size: 10px;
+      line-height: 20px;
+    }
+  }
+
+  & > .extent {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 10px;
+  }
+
+  & > .scale {
+    display: flex;
+    height: 20px;
+
+    & > div {
+      height: 100%;
+      flex-basis: 100%;
+    }
+  }
+
+  & > .categories {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    & > .category {
+      margin: 5px 0;
+      padding: 0;
+      line-height: 15px;
+      font-size: 10px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+
+      & > .color {
+        flex-basis: 10px;
+        height: 10px;
+        margin-right: 5px;
+        vertical-align: text-bottom;
+      }
+
+      & > .title {
+        flex-basis: calc(100% - 20px);
+      }
+    }
+  }
 }

@@ -1,5 +1,22 @@
 <div class="legend" v-if="activeLayers.length">
   <template v-for="layer in activeLayers">
-    {{layer.name}}
+    <div class="info">
+      <span class="title">{{layer.name}}</span>
+      <span class="unit" v-if="layer.unit">{{layer.unit}}</span>
+    </div>
+    <div class="extent" v-if="layer.extent">
+      <span>{{layer.extent[0]}}</span>
+      <span>{{layer.extent[1]}}</span>
+    </div>
+    <div class="scale" v-if="layer.colorScale">
+      <div :style="'background-color:'+color+';'" v-for="color in layer.colorScale">
+      </div>
+    </div>
+    <ul class="categories" v-if="layer.categories">
+      <li class="category" v-for="category in layer.categories">
+        <span class="color" :style="'background-color:'+category.color+';'"></span>
+        <span class="title">{{category.name}}</span>
+      </li>
+    </ul>
   </template>
 </div>

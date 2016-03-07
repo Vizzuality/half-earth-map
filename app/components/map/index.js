@@ -52,6 +52,8 @@ export default Vue.extend({
         zoomControl: false
       });
 
+      Actions.registerMap(this.map);
+
       L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
         subdomains: 'abcd',
@@ -67,7 +69,7 @@ export default Vue.extend({
         zIndex: 10
       }).addTo(this.map);
 
-      L.control.zoom({position: 'bottomright'}).addTo(this.map);
+      L.control.zoom({position: 'topright'}).addTo(this.map);
     },
 
     loadTiles() {
@@ -77,7 +79,7 @@ export default Vue.extend({
         const layer = layers[i];
 
         if (!layer.url && layer.request) {
-          Actions.loadTileLayer(layer, this.map);
+          Actions.loadTileLayer(layer);
         }
 
         if (layer.options) {
@@ -85,7 +87,7 @@ export default Vue.extend({
             const subLayer = layer.options[k];
 
             if (!subLayer.url && subLayer.request) {
-              Actions.loadTileLayer(subLayer, this.map);
+              Actions.loadTileLayer(subLayer);
             }
           }
         }

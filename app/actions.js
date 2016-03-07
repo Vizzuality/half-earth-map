@@ -2,12 +2,16 @@ import Store from './store';
 
 export default {
 
-  loadTileLayer(layer, map) {
-    Store.mutations.LOAD_TILE_LAYER(layer, map);
+  registerMap(map) {
+    Store.mutations.REGISTER_MAP(Store, map);
+  },
+
+  loadTileLayer(layer) {
+    Store.mutations.LOAD_TILE_LAYER(Store, layer);
   },
 
   toggleLayer(layer, parentLayer) {
-    Store.mutations.TOGGLE_LAYER(layer, parentLayer);
+    Store.mutations.TOGGLE_LAYER(Store, layer, parentLayer);
   },
 
   setMapCenter(center) {
