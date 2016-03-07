@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "74a0d423534c90d6c2bc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "336c74e05ccd56f70747"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -695,7 +695,7 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n    <link rel=\"stylesheet\" href=\"http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css\">\n    <title>Half Earth</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n  <body>\n    <div id=\"app\">\n        <map></map>\n        <map-controls></map-controls>\n        <legend></legend>\n    </div>\n    <script type=\"text/javascript\" src=\"bundle.js\"></script>\n  </body>\n</html>\n";
+	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n    <link rel=\"stylesheet\" href=\"http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css\">\n    <title>Half Earth</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n  <body>\n    <div id=\"app\">\n        <map></map>\n        <map-controls></map-controls>\n        <legend></legend>\n        <modal></modal>\n    </div>\n    <script type=\"text/javascript\" src=\"bundle.js\"></script>\n  </body>\n</html>\n";
 
 /***/ },
 /* 4 */
@@ -721,6 +721,10 @@
 
 	var _legend2 = _interopRequireDefault(_legend);
 
+	var _modal = __webpack_require__(51);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	new _vue2.default({
@@ -730,7 +734,8 @@
 	  components: {
 	    'map': _map2.default,
 	    'map-controls': _controls2.default,
-	    'legend': _legend2.default
+	    'legend': _legend2.default,
+	    'modal': _modal2.default
 	  }
 
 	});
@@ -11087,6 +11092,12 @@
 	    if (bbox && bbox.length === 4) {
 	      _store2.default.mutations.SET_MAP_BBOX(_store2.default, bbox);
 	    }
+	  },
+	  openModal: function openModal(layer) {
+	    _store2.default.mutations.OPEN_MODAL(_store2.default, layer);
+	  },
+	  closeModal: function closeModal() {
+	    _store2.default.mutations.CLOSE_MODAL(_store2.default);
 	  }
 	};
 
@@ -11120,9 +11131,19 @@
 	      bbox: null
 	    },
 
+	    modal: {
+	      title: 'Test',
+	      content: '',
+	      active: false
+	    },
+
 	    layers: [{
 	      name: 'Protected Areas',
 	      zIndex: 5,
+	      attributions: {
+	        title: 'Protected Areas',
+	        content: 'IUCN and UNEP-WCMC (2015), The World Database on Protected Areas (WDPA) [On-line], Cambridge, UK: UNEP-WCMC. Available at: <a href="www.protectedplanet.net" target="_blank">www.protectedplanet.net</a>.'
+	      },
 	      categories: [{ color: '#3E7BB6', name: 'Protected Area' }],
 	      active: false,
 	      url: '',
@@ -11143,6 +11164,10 @@
 	    }, {
 	      name: 'Eco-Regions',
 	      zIndex: 3,
+	      attributions: {
+	        title: 'Eco-Regions',
+	        content: 'World Wildlife Fund. "Terrestrial Ecosystems of the World."'
+	      },
 	      categories: [{ color: '#007154', name: 'Tropical and subtropical Moist Broadleaf forest' }, { color: '#bff7e9', name: 'Tropical and subtropical dry broadleaf forest' }, { color: '#01e0a7', name: 'Tropical and subtropical conifers forest' }, { color: '#01a97d', name: 'Temperate broadleaf and mixed forest' }, { color: '#67cfa4', name: 'Temperate conifers forest' }, { color: '#458a6d', name: 'Boreal forest and taiga' }, { color: '#59b5a8', name: 'Tropical and subtropical grasslands, savannas, and shrublands' }, { color: '#d0eae1', name: 'Temperate Grasslands Savannas and shrublands' }, { color: '#2ee9ff', name: 'Flooded grasslands and Savannas' }, { color: '#4390d2', name: 'Flooded grasslands and Savannas' }, { color: '#097a89', name: 'Tundra' }, { color: '#584554', name: 'Mediterranean Forest, woodlands and scrub' }, { color: '#d2f7a8', name: 'Deserts and xeric shrublands' }, { color: '#5860cc', name: 'Mangroves' }, { color: '#eeeeee', name: 'Lakes' }, { color: '#a0a0a0', name: 'Rock and ice' }],
 	      active: '',
 	      url: '',
@@ -11368,6 +11393,20 @@
 	    /* Save the map instance */
 	    REGISTER_MAP: function REGISTER_MAP(store, map) {
 	      store.state.map.map = map;
+	    },
+
+
+	    /* Open the modal with the content of the layer */
+	    OPEN_MODAL: function OPEN_MODAL(store, layer) {
+	      store.state.modal.title = layer.attributions.title;
+	      store.state.modal.content = layer.attributions.content;
+	      store.state.modal.active = true;
+	    },
+
+
+	    /* Close the modal */
+	    CLOSE_MODAL: function CLOSE_MODAL(store) {
+	      store.state.modal.active = false;
 	    }
 	  }
 
@@ -12024,7 +12063,7 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  max-height: calc(100% - 20px);\n  overflow: scroll;\n  -webkit-overflow-scrolling: touch;\n  padding: 85px 20px 20px 30px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n\n.controls > .logo {\n  display: block;\n  text-align: center;\n  padding-top: 20px;\n  padding-bottom: 12px;\n  position: fixed;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  background-color: #fff;\n  border-bottom: 1px solid rgba(34,34,34, .1);\n  z-index: 1;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > hr {\n  width: calc(100% + 50px);\n  position: relative;\n  left: -30px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  max-height: calc(100% - 20px);\n  overflow: scroll;\n  -webkit-overflow-scrolling: touch;\n  padding: 85px 20px 20px 30px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1), 0 0 0 1px rgba(0,0,0, .05);\n}\n\n.controls > .logo {\n  display: block;\n  text-align: center;\n  padding-top: 20px;\n  padding-bottom: 12px;\n  position: fixed;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  background-color: #fff;\n  border-bottom: 1px solid rgba(34,34,34, .1);\n  z-index: 1;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > hr {\n  width: calc(100% + 50px);\n  position: relative;\n  left: -30px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n", ""]);
 
 	// exports
 
@@ -12042,6 +12081,10 @@
 	var _vue = __webpack_require__(5);
 
 	var _vue2 = _interopRequireDefault(_vue);
+
+	var _actions = __webpack_require__(18);
+
+	var _actions2 = _interopRequireDefault(_actions);
 
 	var _store = __webpack_require__(19);
 
@@ -12085,6 +12128,12 @@
 
 	      return res;
 	    }
+	  },
+
+	  methods: {
+	    openModal: function openModal(layer) {
+	      _actions2.default.openModal(layer);
+	    }
 	  }
 
 	});
@@ -12093,7 +12142,7 @@
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"legend\" v-if=\"activeLayers.length\">\n  <template v-for=\"layer in activeLayers\">\n    <div class=\"info\">\n      <span class=\"title\">{{layer.name}}</span>\n      <span class=\"unit\" v-if=\"layer.unit\">{{layer.unit}}</span>\n    </div>\n    <div class=\"extent\" v-if=\"layer.extent\">\n      <span>{{layer.extent[0]}}</span>\n      <span>{{layer.extent[1]}}</span>\n    </div>\n    <div class=\"scale\" v-if=\"layer.colorScale\">\n      <div :style=\"'background-color:'+color+';'\" v-for=\"color in layer.colorScale\">\n      </div>\n    </div>\n    <ul class=\"categories\" v-if=\"layer.categories\">\n      <li class=\"category\" v-for=\"category in layer.categories\">\n        <span class=\"color\" :style=\"'background-color:'+category.color+';'\"></span>\n        <span class=\"title\">{{category.name}}</span>\n      </li>\n    </ul>\n  </template>\n</div>\n";
+	module.exports = "<div class=\"legend\" v-if=\"activeLayers.length\">\n  <template v-for=\"layer in activeLayers\">\n    <div class=\"info\">\n      <span class=\"title\">{{layer.name}}</span>\n      <a class=\"modal-link\" @click=\"openModal(layer)\" v-if=\"layer.attributions\">+ Info</a>\n      <span class=\"unit\" v-if=\"layer.unit\">{{layer.unit}}</span>\n    </div>\n    <div class=\"extent\" v-if=\"layer.extent\">\n      <span>{{layer.extent[0]}}</span>\n      <span>{{layer.extent[1]}}</span>\n    </div>\n    <div class=\"scale\" v-if=\"layer.colorScale\">\n      <div :style=\"'background-color:'+color+';'\" v-for=\"color in layer.colorScale\">\n      </div>\n    </div>\n    <ul class=\"categories\" v-if=\"layer.categories\">\n      <li class=\"category\" v-for=\"category in layer.categories\">\n        <span class=\"color\" :style=\"'background-color:'+category.color+';'\"></span>\n        <span class=\"title\">{{category.name}}</span>\n      </li>\n    </ul>\n  </template>\n</div>\n";
 
 /***/ },
 /* 49 */
@@ -12130,7 +12179,127 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.legend {\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n  width: 250px;\n  padding: 20px;\n  max-height: calc(50% - 20px);\n  overflow: scroll;\n  -webkit-overflow-scrolling: touch;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1);\n\tborder: solid 1px rgba(0,0,0, .05);\n}\n\n.legend > .info {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  text-transform: uppercase;\n  margin-bottom: 15px;\n}\n\n.legend > .info:not(:first-of-type) {\n  margin-top: 20px;\n}\n\n.legend > .info > .title {\n  font-size: 13px;\n}\n\n.legend > .info > .unit {\n  text-align: right;\n  font-size: 10px;\n  line-height: 20px;\n}\n\n.legend > .extent {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  font-size: 10px;\n}\n\n.legend > .scale {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  height: 20px;\n}\n\n.legend > .scale > div {\n  height: 100%;\n  -webkit-flex-basis: 100%;\n      -ms-flex-preferred-size: 100%;\n          flex-basis: 100%;\n}\n\n.legend > .categories {\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n}\n\n.legend > .categories > .category {\n  margin: 5px 0;\n  padding: 0;\n  line-height: 15px;\n  font-size: 10px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.legend > .categories > .category > .color {\n  -webkit-flex-basis: 10px;\n      -ms-flex-preferred-size: 10px;\n          flex-basis: 10px;\n  height: 10px;\n  margin-right: 5px;\n  vertical-align: text-bottom;\n}\n\n.legend > .categories > .category > .title {\n  -webkit-flex-basis: calc(100% - 20px);\n      -ms-flex-preferred-size: calc(100% - 20px);\n          flex-basis: calc(100% - 20px);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.legend {\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n  width: 250px;\n  padding: 20px;\n  max-height: calc(50% - 20px);\n  overflow: scroll;\n  -webkit-overflow-scrolling: touch;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1), 0 0 0 1px rgba(0,0,0, .05);\n}\n\n.legend > .info {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  text-transform: uppercase;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  margin-bottom: 15px;\n}\n\n.legend > .info:not(:first-of-type) {\n  margin-top: 20px;\n}\n\n.legend > .info > .title {\n  font-size: 13px;\n}\n\n.legend > .info > .modal-link {\n  color: #0272ba;\n  text-align: right;\n  font-size: 10px;\n  cursor: pointer;\n}\n\n.legend > .info > .unit {\n  -webkit-flex-basis: 100%;\n      -ms-flex-preferred-size: 100%;\n          flex-basis: 100%;\n  text-align: right;\n  font-size: 10px;\n  line-height: 20px;\n}\n\n.legend > .extent {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  font-size: 10px;\n}\n\n.legend > .scale {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  height: 20px;\n}\n\n.legend > .scale > div {\n  height: 100%;\n  -webkit-flex-basis: 100%;\n      -ms-flex-preferred-size: 100%;\n          flex-basis: 100%;\n}\n\n.legend > .categories {\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n}\n\n.legend > .categories > .category {\n  margin: 5px 0;\n  padding: 0;\n  line-height: 15px;\n  font-size: 10px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n\n.legend > .categories > .category > .color {\n  -webkit-flex-basis: 10px;\n      -ms-flex-preferred-size: 10px;\n          flex-basis: 10px;\n  height: 10px;\n  margin-right: 5px;\n  vertical-align: text-bottom;\n}\n\n.legend > .categories > .category > .title {\n  -webkit-flex-basis: calc(100% - 20px);\n      -ms-flex-preferred-size: calc(100% - 20px);\n          flex-basis: calc(100% - 20px);\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 51 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(5);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _actions = __webpack_require__(18);
+
+	var _actions2 = _interopRequireDefault(_actions);
+
+	var _store = __webpack_require__(19);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _close = __webpack_require__(52);
+
+	var _close2 = _interopRequireDefault(_close);
+
+	var _template = __webpack_require__(53);
+
+	var _template2 = _interopRequireDefault(_template);
+
+	__webpack_require__(54);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _vue2.default.extend({
+
+	  template: _template2.default,
+
+	  data: function data() {
+	    return {
+	      modal: _store2.default.state.modal,
+	      closeButton: _close2.default
+	    };
+	  },
+
+
+	  computed: {
+	    title: function title() {
+	      return this.modal.title;
+	    },
+	    content: function content() {
+	      return this.modal.content;
+	    },
+	    active: function active() {
+	      return this.modal.active;
+	    }
+	  },
+
+	  methods: {
+	    closeModal: function closeModal(e) {
+	      if (e.target.classList.contains('modal-wrapper') || e.target.classList.contains('ok-button') || e.target.classList.contains('close-button')) {
+	        _actions2.default.closeModal();
+	      }
+	    }
+	  }
+
+	});
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEwcHgiIGhlaWdodD0iMTBweCIgdmlld0JveD0iMCAwIDEwIDEwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjYuMSAoMjYzMTMpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPmNsb3NlPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBhdGggaWQ9InBhdGgtMSIgZD0iTTEwMjUuMzI5MTQsMTgwLjI1ODA3MyBMMTAyMy45MTQ5MywxNzguODQzODYgTDEwMjEuMDg2NSwxODEuNjcyMjg3IEwxMDE4LjI1ODA3LDE3OC44NDM4NiBMMTAxNi44NDM4NiwxODAuMjU4MDczIEwxMDE5LjY3MjI5LDE4My4wODY1MDEgTDEwMTYuODQzODYsMTg1LjkxNDkyOCBMMTAxOC4yNTgwNywxODcuMzI5MTQxIEwxMDIxLjA4NjUsMTg0LjUwMDcxNCBMMTAyMy45MTQ5MywxODcuMzI5MTQxIEwxMDI1LjMyOTE0LDE4NS45MTQ5MjggTDEwMjIuNTAwNzEsMTgzLjA4NjUwMSBMMTAyNS4zMjkxNCwxODAuMjU4MDczIFoiPjwvcGF0aD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJQcm9wb3NhbF8wMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhhbGYtRWFydGgtTWFwLWluZm8iIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMDE2LjAwMDAwMCwgLTE3OC4wMDAwMDApIj4KICAgICAgICAgICAgPGcgaWQ9ImNsb3NlIj4KICAgICAgICAgICAgICAgIDx1c2UgZmlsbD0iI0ZGRkZGRiIgZmlsbC1ydWxlPSJldmVub2RkIiB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICAgICAgICAgIDx1c2UgZmlsbD0ibm9uZSIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICAgICAgICAgICAgICA8dXNlIGZpbGw9Im5vbmUiIHhsaW5rOmhyZWY9IiNwYXRoLTEiPjwvdXNlPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"modal-mask\" v-if=\"active\" transition=\"modal\" @click=\"closeModal\">\n  <div class=\"modal-wrapper\">\n    <div class=\"modal-container\">\n      <h1>{{title}}</h1>\n      <p>{{{content}}}</p>\n      <button class=\"ok-button\" @click=\"closeModal\">Ok</button>\n      <img :src=\"closeButton\" class=\"close-button\" alt=\"Close modal\" />\n    </div>\n  </div>\n</div>\n";
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(55);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(14)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(55, function() {
+				var newContent = __webpack_require__(55);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.modal-mask {\n  position: fixed;\n  z-index: 1000000;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0, .2);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n\n.modal-wrapper {\n  display: table-cell;\n  vertical-align: middle;\n}\n\n.modal-container {\n  position: relative;\n  width: 700px;\n  max-width: calc(100% - 40px);\n  margin: 0px auto;\n  padding: 50px 50px 70px 50px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1), 0 0 0 1px rgba(0,0,0, .05);\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n}\n\n.modal-container > h1 {\n  color: #0272ba;\n  font-size: 20px;\n  font-weight: normal;\n  margin-top: 0;\n  margin-bottom: 20px;\n}\n\n.modal-container > p {\n  font-size: 15px;\n  line-height: 22px;\n}\n\n.modal-container a {\n  color: #0272ba;\n  text-decoration: none;\n}\n\n.modal-container > .ok-button {\n  border: none;\n  background-color: #0272ba;\n  height: 48px;\n  width: 66px;\n  font-size: 13px;\n  color: #fff;\n  text-transform: uppercase;\n  position: absolute;\n  bottom: -10px;\n  right: -10px;\n}\n\n.modal-container > .close-button {\n  position: absolute;\n  top: -18px;\n  right: 0;\n  height: 10px;\n  width: 10px;\n  cursor: pointer;\n}\n\n/*\n * the following styles are auto-applied to elements with\n * v-transition=\"modal\" when their visiblity is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n\n.modal-enter, .modal-leave {\n  opacity: 0;\n}\n\n.modal-enter .modal-container,\n.modal-leave .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n", ""]);
 
 	// exports
 

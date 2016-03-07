@@ -24,6 +24,14 @@ export default {
     if (bbox && bbox.length === 4) {
       Store.mutations.SET_MAP_BBOX(Store, bbox);
     }
+  },
+
+  openModal(layer) {
+    Store.mutations.OPEN_MODAL(Store, layer);
+  },
+
+  closeModal() {
+    Store.mutations.CLOSE_MODAL(Store);
   }
 
 };
