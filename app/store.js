@@ -29,7 +29,7 @@ export default {
           content: 'IUCN and UNEP-WCMC (2015), The World Database on Protected Areas (WDPA) [On-line], Cambridge, UK: UNEP-WCMC. Available at: <a href="http://www.protectedplanet.net" target="_blank">www.protectedplanet.net</a>.'
         },
         categories: [
-          {color: '#3E7BB6', name: 'Protected Area'}
+          {color: '#3E7BB6', border: '#5CA2D1', opacity: 0.6, name: 'Protected Area'}
         ],
         active: false,
         url: '',
@@ -58,21 +58,21 @@ export default {
           content: 'Battistella, L., Temperley, W., Bastin, L., Bertzky, B., Martinez-Lopez, J., Dubois, G. (2015)<br/>Map of protection levels for the terrestrial and marine ecoregions of the world as of August 2014.<br/>© European Union, 2015. Reproduction is authorised provided the source is acknowledged.'
         },
         categories: [
-          {color: '#007154', name: 'Tropical & subtropical Moist Broadleaf forest'},
-          {color: '#bff7e9', name: 'Tropical & subtropical dry broadleaf forest'},
-          {color: '#01e0a7', name: 'Tropical & subtropical coniferous forest'},
-          {color: '#01a97d', name: 'Temperate broadleaf & mixed forests'},
-          {color: '#67cfa4', name: 'Temperate conifers forests'},
-          {color: '#458a6d', name: 'Boreal forests/taiga'},
-          {color: '#59b5a8', name: 'Tropical & subtropical grasslands, savannas, & shrublands'},
-          {color: '#d0eae1', name: 'Temperate Grasslands, Savannas & shrublands'},
-          {color: '#2ee9ff', name: 'Flooded grasslands & Savannas'},
-          {color: '#4390d2', name: 'Montane grasslands & shrublands'},
-          {color: '#097a89', name: 'Tundra'},
-          {color: '#584554', name: 'Mediterranean Forests, woodlands & scrub'},
-          {color: '#d2f7a8', name: 'Deserts & xeric shrublands'},
-          {color: '#5860cc', name: 'Mangroves'},
-          {color: '#eeeeee', name: 'Marine'}
+          {color: '#007154', border: '#584554', opacity: 0.5, name: 'Tropical & subtropical Moist Broadleaf forest'},
+          {color: '#bff7e9', border: '#584554', opacity: 0.5, name: 'Tropical & subtropical dry broadleaf forest'},
+          {color: '#01e0a7', border: '#584554', opacity: 0.5, name: 'Tropical & subtropical coniferous forest'},
+          {color: '#01a97d', border: '#584554', opacity: 0.5, name: 'Temperate broadleaf & mixed forests'},
+          {color: '#67cfa4', border: '#584554', opacity: 0.5, name: 'Temperate conifers forests'},
+          {color: '#458a6d', border: '#584554', opacity: 0.5, name: 'Boreal forests/taiga'},
+          {color: '#59b5a8', border: '#584554', opacity: 0.5, name: 'Tropical & subtropical grasslands, savannas, & shrublands'},
+          {color: '#d0eae1', border: '#584554', opacity: 0.5, name: 'Temperate Grasslands, Savannas & shrublands'},
+          {color: '#2ee9ff', border: '#584554', opacity: 0.5, name: 'Flooded grasslands & Savannas'},
+          {color: '#4390d2', border: '#584554', opacity: 0.5, name: 'Montane grasslands & shrublands'},
+          {color: '#097a89', border: '#584554', opacity: 0.5, name: 'Tundra'},
+          {color: '#584554', border: '#584554', opacity: 0.5, name: 'Mediterranean Forests, woodlands & scrub'},
+          {color: '#d2f7a8', border: '#584554', opacity: 0.5, name: 'Deserts & xeric shrublands'},
+          {color: '#5860cc', border: '#584554', opacity: 0.5, name: 'Mangroves'},
+          {color: '#eeeeee', border: '#584554', opacity: 0.5, name: 'Marine'}
         ],
         active: '',
         url: '',
@@ -108,7 +108,7 @@ export default {
                   'type': 'cartodb',
                   'options': {
                     'sql': 'SELECT * FROM animalia',
-                    'cartocss': '#animalia{polygon-opacity: 0.8; line-width: 0.1; line-opacity: 1;} #animalia [ dn = 7] {polygon-fill: #4a1486;line-color: #4a1486;} #animalia [ dn = 6] {polygon-fill: #6a51a3; line-color: #6a51a3;} #animalia [ dn = 5] {polygon-fill: #807dba; line-color: #807dba;} #animalia [ dn = 4] {polygon-fill: #9e9ac8; line-color: #9e9ac8;} #animalia [ dn = 3] {polygon-fill: #bcbddc; line-color: #bcbddc;} #animalia [ dn = 2] {polygon-fill: #dadaeb;line-color:  #dadaeb;} #animalia [ dn = 1] {polygon-fill: #f2f0f7; line-color: #f2f0f7;}',
+                    'cartocss': '#animalia{polygon-opacity: 1; line-width: 0.1; line-opacity: 1;} #animalia [ dn = 7] {polygon-fill: #4a1486;line-color: #4a1486;} #animalia [ dn = 6] {polygon-fill: #6a51a3; line-color: #6a51a3;} #animalia [ dn = 5] {polygon-fill: #807dba; line-color: #807dba;} #animalia [ dn = 4] {polygon-fill: #9e9ac8; line-color: #9e9ac8;} #animalia [ dn = 3] {polygon-fill: #bcbddc; line-color: #bcbddc;} #animalia [ dn = 2] {polygon-fill: #dadaeb;line-color:  #dadaeb;} #animalia [ dn = 1] {polygon-fill: #f2f0f7; line-color: #f2f0f7;}',
                     'cartocss_version': '2.3.0',
                     'geom_column': 'the_geom_webmercator',
                     'geom_type': 'geometry'
@@ -132,7 +132,7 @@ export default {
                   'type': 'cartodb',
                   'options': {
                     'sql': 'SELECT * FROM aves',
-                    'cartocss': '#aves{polygon-opacity: 0.8; line-width: 0.1; line-opacity: 0.8;} #aves [ dn = 7] {polygon-fill: #8A4E8A; line-color: #8A4E8A;} #aves [ dn = 6] {polygon-fill: #A05AA0; line-color: #A05AA0;} #aves [ dn = 5] {polygon-fill: #B379B3; line-color: #B379B3;} #aves [ dn = 4] {polygon-fill: #C08FC0; line-color: #C08FC0;} #aves [ dn = 3] {polygon-fill: #CCA5CC; line-color: #CCA5CC;} #aves [ dn = 2] {polygon-fill: #D8BBD8; line-color: #D8BBD8;} #aves [ dn = 1] {polygon-fill: #F1E6F1; line-color: #F1E6F1;}',
+                    'cartocss': '#aves{polygon-opacity: 1; line-width: 0.1; line-opacity: 0.8;} #aves [ dn = 7] {polygon-fill: #8A4E8A; line-color: #8A4E8A;} #aves [ dn = 6] {polygon-fill: #A05AA0; line-color: #A05AA0;} #aves [ dn = 5] {polygon-fill: #B379B3; line-color: #B379B3;} #aves [ dn = 4] {polygon-fill: #C08FC0; line-color: #C08FC0;} #aves [ dn = 3] {polygon-fill: #CCA5CC; line-color: #CCA5CC;} #aves [ dn = 2] {polygon-fill: #D8BBD8; line-color: #D8BBD8;} #aves [ dn = 1] {polygon-fill: #F1E6F1; line-color: #F1E6F1;}',
                     'cartocss_version': '2.3.0',
                     'geom_column': 'the_geom_webmercator',
                     'geom_type': 'geometry'
@@ -156,7 +156,7 @@ export default {
                   'type': 'cartodb',
                   'options': {
                     'sql': 'SELECT * FROM reptilia',
-                    'cartocss': '#amphibia{polygon-opacity: 0.8; line-width: 0; line-opacity: 1;} #amphibia [ dn <= 7] {polygon-fill: #8c2d04; line-color: #8c2d04;} #amphibia [ dn <= 6] {polygon-fill: #d94801; line-color: #d94801;} #amphibia [ dn <= 5] {polygon-fill: #f16913; line-color: #f16913;} #amphibia [ dn <= 4] {polygon-fill: #fd8d3c; line-color: #fd8d3c;} #amphibia [ dn <= 3] {polygon-fill: #fdae6b; line-color: #fdae6b;} #amphibia [ dn <= 2] {polygon-fill: #fdd0a2; line-color: #fdd0a2;} #amphibia [ dn <= 1] {polygon-fill: #feedde; line-color: #feedde;}',
+                    'cartocss': '#amphibia{polygon-opacity: 1; line-width: 0; line-opacity: 1;} #amphibia [ dn <= 7] {polygon-fill: #8c2d04; line-color: #8c2d04;} #amphibia [ dn <= 6] {polygon-fill: #d94801; line-color: #d94801;} #amphibia [ dn <= 5] {polygon-fill: #f16913; line-color: #f16913;} #amphibia [ dn <= 4] {polygon-fill: #fd8d3c; line-color: #fd8d3c;} #amphibia [ dn <= 3] {polygon-fill: #fdae6b; line-color: #fdae6b;} #amphibia [ dn <= 2] {polygon-fill: #fdd0a2; line-color: #fdd0a2;} #amphibia [ dn <= 1] {polygon-fill: #feedde; line-color: #feedde;}',
                     'cartocss_version': '2.3.0',
                     'geom_column': 'the_geom_webmercator',
                     'geom_type': 'geometry'
@@ -204,7 +204,7 @@ export default {
                   'type': 'cartodb',
                   'options': {
                     'sql': 'SELECT * FROM amphibia',
-                    'cartocss': '#amphibia{polygon-fill: #EDF8FB; polygon-opacity: 0.8; line-color: #FFF; line-width: 0; line-opacity: 1;} #amphibia [ dn = 7] {polygon-fill: #005824;} #amphibia [ dn = 6] {polygon-fill: #238b45;} #amphibia [ dn = 5] {polygon-fill: #41ae76;} #amphibia [ dn = 4] {polygon-fill: #66c2a4;} #amphibia [ dn = 3] {polygon-fill: #99d8c9;} #amphibia [ dn = 2] {polygon-fill: #ccece6;} #amphibia [ dn = 1] {polygon-fill: #edf8fb;}',
+                    'cartocss': '#amphibia{polygon-fill: #EDF8FB; polygon-opacity: 1; line-color: #FFF; line-width: 0; line-opacity: 1;} #amphibia [ dn = 7] {polygon-fill: #005824;} #amphibia [ dn = 6] {polygon-fill: #238b45;} #amphibia [ dn = 5] {polygon-fill: #41ae76;} #amphibia [ dn = 4] {polygon-fill: #66c2a4;} #amphibia [ dn = 3] {polygon-fill: #99d8c9;} #amphibia [ dn = 2] {polygon-fill: #ccece6;} #amphibia [ dn = 1] {polygon-fill: #edf8fb;}',
                     'cartocss_version': '2.3.0',
                     'geom_column': 'the_geom_webmercator',
                     'geom_type': 'geometry'
