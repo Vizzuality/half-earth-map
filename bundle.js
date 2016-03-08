@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "69cf0e51fd652796dc43"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3a5f6430f5a395e0230d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -11168,7 +11168,7 @@
 	        title: 'Eco-Regions',
 	        content: 'Battistella, L., Temperley, W., Bastin, L., Bertzky, B., Martinez-Lopez, J., Dubois, G. (2015)<br/>Map of protection levels for the terrestrial and marine ecoregions of the world as of August 2014.<br/>© European Union, 2015. Reproduction is authorised provided the source is acknowledged.'
 	      },
-	      categories: [{ color: '#007154', name: 'Tropical & subtropical Moist Broadleaf forest' }, { color: '#bff7e9', name: 'Tropical & subtropical dry broadleaf forest' }, { color: '#01e0a7', name: 'Tropical & subtropical coniferous forest' }, { color: '#01a97d', name: 'Temperate broadleaf & mixed forests' }, { color: '#67cfa4', name: 'Temperate conifers forests' }, { color: '#458a6d', name: 'Boreal forests/taiga' }, { color: '#59b5a8', name: 'Tropical & subtropical grasslands, savannas, & shrublands' }, { color: '#d0eae1', name: 'Temperate Grasslands, Savannas & shrublands' }, { color: '#2ee9ff', name: 'Flooded grasslands & Savannas' }, { color: '#4390d2', name: 'Montane grasslands & shrublands' }, { color: '#097a89', name: 'Tundra' }, { color: '#584554', name: 'Mediterranean Forests, woodlands & scrub' }, { color: '#d2f7a8', name: 'Deserts & xeric shrublands' }, { color: '#5860cc', name: 'Mangroves' }, { color: '#eeeeee', name: 'Lakes' }],
+	      categories: [{ color: '#007154', name: 'Tropical & subtropical Moist Broadleaf forest' }, { color: '#bff7e9', name: 'Tropical & subtropical dry broadleaf forest' }, { color: '#01e0a7', name: 'Tropical & subtropical coniferous forest' }, { color: '#01a97d', name: 'Temperate broadleaf & mixed forests' }, { color: '#67cfa4', name: 'Temperate conifers forests' }, { color: '#458a6d', name: 'Boreal forests/taiga' }, { color: '#59b5a8', name: 'Tropical & subtropical grasslands, savannas, & shrublands' }, { color: '#d0eae1', name: 'Temperate Grasslands, Savannas & shrublands' }, { color: '#2ee9ff', name: 'Flooded grasslands & Savannas' }, { color: '#4390d2', name: 'Montane grasslands & shrublands' }, { color: '#097a89', name: 'Tundra' }, { color: '#584554', name: 'Mediterranean Forests, woodlands & scrub' }, { color: '#d2f7a8', name: 'Deserts & xeric shrublands' }, { color: '#5860cc', name: 'Mangroves' }, { color: '#eeeeee', name: 'Marine' }],
 	      active: '',
 	      url: '',
 	      tileLayer: null,

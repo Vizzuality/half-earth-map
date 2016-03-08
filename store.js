@@ -72,7 +72,7 @@ export default {
           {color: '#584554', name: 'Mediterranean Forests, woodlands & scrub'},
           {color: '#d2f7a8', name: 'Deserts & xeric shrublands'},
           {color: '#5860cc', name: 'Mangroves'},
-          {color: '#eeeeee', name: 'Lakes'}
+          {color: '#eeeeee', name: 'Marine'}
         ],
         active: '',
         url: '',
