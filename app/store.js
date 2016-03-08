@@ -26,7 +26,7 @@ export default {
         zIndex: 5,
         attributions: {
           title: 'Protected Areas',
-          content: 'IUCN and UNEP-WCMC (2015), The World Database on Protected Areas (WDPA) [On-line], Cambridge, UK: UNEP-WCMC. Available at: <a href="www.protectedplanet.net" target="_blank">www.protectedplanet.net</a>.'
+          content: 'IUCN and UNEP-WCMC (2015), The World Database on Protected Areas (WDPA) [On-line], Cambridge, UK: UNEP-WCMC. Available at: <a href="http://www.protectedplanet.net" target="_blank">www.protectedplanet.net</a>.'
         },
         categories: [
           {color: '#3E7BB6', name: 'Protected Area'}
@@ -55,25 +55,24 @@ export default {
         zIndex: 3,
         attributions: {
           title: 'Eco-Regions',
-          content: 'World Wildlife Fund. "Terrestrial Ecosystems of the World."'
+          content: 'Battistella, L., Temperley, W., Bastin, L., Bertzky, B., Martinez-Lopez, J., Dubois, G. (2015)<br/>Map of protection levels for the terrestrial and marine ecoregions of the world as of August 2014.<br/>© European Union, 2015. Reproduction is authorised provided the source is acknowledged.'
         },
         categories: [
-          {color: '#007154', name: 'Tropical and subtropical Moist Broadleaf forest'},
-          {color: '#bff7e9', name: 'Tropical and subtropical dry broadleaf forest'},
-          {color: '#01e0a7', name: 'Tropical and subtropical conifers forest'},
-          {color: '#01a97d', name: 'Temperate broadleaf and mixed forest'},
-          {color: '#67cfa4', name: 'Temperate conifers forest'},
-          {color: '#458a6d', name: 'Boreal forest and taiga'},
-          {color: '#59b5a8', name: 'Tropical and subtropical grasslands, savannas, and shrublands'},
-          {color: '#d0eae1', name: 'Temperate Grasslands Savannas and shrublands'},
-          {color: '#2ee9ff', name: 'Flooded grasslands and Savannas'},
-          {color: '#4390d2', name: 'Flooded grasslands and Savannas'},
+          {color: '#007154', name: 'Tropical & subtropical Moist Broadleaf forest'},
+          {color: '#bff7e9', name: 'Tropical & subtropical dry broadleaf forest'},
+          {color: '#01e0a7', name: 'Tropical & subtropical coniferous forest'},
+          {color: '#01a97d', name: 'Temperate broadleaf & mixed forests'},
+          {color: '#67cfa4', name: 'Temperate conifers forests'},
+          {color: '#458a6d', name: 'Boreal forests/taiga'},
+          {color: '#59b5a8', name: 'Tropical & subtropical grasslands, savannas, & shrublands'},
+          {color: '#d0eae1', name: 'Temperate Grasslands, Savannas & shrublands'},
+          {color: '#2ee9ff', name: 'Flooded grasslands & Savannas'},
+          {color: '#4390d2', name: 'Montane grasslands & shrublands'},
           {color: '#097a89', name: 'Tundra'},
-          {color: '#584554', name: 'Mediterranean Forest, woodlands and scrub'},
-          {color: '#d2f7a8', name: 'Deserts and xeric shrublands'},
+          {color: '#584554', name: 'Mediterranean Forests, woodlands & scrub'},
+          {color: '#d2f7a8', name: 'Deserts & xeric shrublands'},
           {color: '#5860cc', name: 'Mangroves'},
-          {color: '#eeeeee', name: 'Lakes'},
-          {color: '#a0a0a0', name: 'Rock and ice'}
+          {color: '#eeeeee', name: 'Marine'}
         ],
         active: '',
         url: '',
@@ -84,7 +83,7 @@ export default {
               'user_name': 'simbiotica',
               'type': 'cartodb',
               'options': {
-                'sql': 'SELECT * from wwf_terr_ecos',
+                'sql': 'SELECT * FROM ecoregions_marine_terrestrial',
                 'cartocss': '#wwf_terr_ecos { polygon-opacity: 0.5; line-color: #584554; line-width: 0.5; line-opacity: 0.5;} #wwf_terr_ecos[biome=1] { polygon-fill: #007154;} #wwf_terr_ecos[biome=2] { polygon-fill: #bff7e9;} #wwf_terr_ecos[biome=3] { polygon-fill: #01e0a7;} #wwf_terr_ecos[biome=4] { polygon-fill: #01a97d;} #wwf_terr_ecos[biome=5] { polygon-fill: #67cfa4;} #wwf_terr_ecos[biome=6] { polygon-fill: #458a6d;} #wwf_terr_ecos[biome=7] { polygon-fill: #59b5a8;} #wwf_terr_ecos[biome=8] { polygon-fill: #d0eae1;} #wwf_terr_ecos[biome=9] { polygon-fill: #2ee9ff;}#wwf_terr_ecos[biome=10] { polygon-fill: #4390d2;} #wwf_terr_ecos[biome=11] { polygon-fill: #097a89;} #wwf_terr_ecos[biome=12] { polygon-fill: #584554;}#wwf_terr_ecos[biome=13] { polygon-fill: #d2f7a8;} #wwf_terr_ecos[biome=14] { polygon-fill: #5860cc;} #wwf_terr_ecos[biome=98] { polygon-fill: #eeeeee;} #wwf_terr_ecos[biome=99] { polygon-fill: #a0a0a0;}',
                 'cartocss_version': '2.3.0',
                 'geom_column': 'the_geom_webmercator',
