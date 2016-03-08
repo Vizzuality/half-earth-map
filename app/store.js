@@ -99,6 +99,10 @@ export default {
             colorScale: ['#f2f0f7', '#dadaeb', '#bcbddc', '#9e9ac8', '#807dba', '#6a51a3', '#4a1486'],
             unit: 'Species / Km²',
             extent: [0.5, 821],
+            attributions: {
+              title: 'Animalia',
+              content: 'Species data sourced from JRC Digital Observatory for Protected Areas (<a href="http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/" target="_blank">http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/</a>) calculated by overlaying the range polygons from the IUCN Redlist. The IUCN Red List of Threatened Species provides taxonomic, conservation status, and distribution information on taxa that are facing a high risk of global extinction (see more at <a href="http://www.iucnredlist.org/" target="_blank">http://www.iucnredlist.org/</a>).'
+            },
             url: '',
             tileLayer: null,
             request: {
@@ -123,6 +127,10 @@ export default {
             colorScale: ['#F1E6F1', '#D8BBD8', '#CCA5CC', '#C08FC0', '#B379B3', '#A05AA0', '#8A4E8A'],
             unit: 'Species / Km²',
             extent: [0.5, 358],
+            attributions: {
+              title: 'Birds',
+              content: 'Species data sourced from JRC Digital Observatory for Protected Areas (<a href="http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/" target="_blank">http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/</a>) calculated by overlaying the range polygons from the IUCN Redlist. The IUCN Red List of Threatened Species provides taxonomic, conservation status, and distribution information on taxa that are facing a high risk of global extinction (see more at <a href="http://www.iucnredlist.org/" target="_blank">http://www.iucnredlist.org/</a>).'
+            },
             url: '',
             tileLayer: null,
             request: {
@@ -147,6 +155,10 @@ export default {
             colorScale: ['#feedde', '#fdd0a2', '#fdae6b', '#fd8d3c', '#f16913', '#d94801', '#8c2d04'],
             unit: 'Species / Km²',
             extent: [0.5, 47],
+            attributions: {
+              title: 'Reptilians',
+              content: 'Species data sourced from JRC Digital Observatory for Protected Areas (<a href="http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/" target="_blank">http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/</a>) calculated by overlaying the range polygons from the IUCN Redlist. The IUCN Red List of Threatened Species provides taxonomic, conservation status, and distribution information on taxa that are facing a high risk of global extinction (see more at <a href="http://www.iucnredlist.org/" target="_blank">http://www.iucnredlist.org/</a>).'
+            },
             url: '',
             tileLayer: null,
             request: {
@@ -171,6 +183,10 @@ export default {
             colorScale: ['#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
             unit: 'Species / Km²',
             extent: [0.5, 156],
+            attributions: {
+              title: 'Mammals',
+              content: 'Species data sourced from JRC Digital Observatory for Protected Areas (<a href="http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/" target="_blank">http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/</a>) calculated by overlaying the range polygons from the IUCN Redlist. The IUCN Red List of Threatened Species provides taxonomic, conservation status, and distribution information on taxa that are facing a high risk of global extinction (see more at <a href="http://www.iucnredlist.org/" target="_blank">http://www.iucnredlist.org/</a>).'
+            },
             url: '',
             tileLayer: null,
             request: {
@@ -195,6 +211,10 @@ export default {
             colorScale: ['#edf8fb', '#ccece6', '#99d8c9', '#66c2a4', '#41ae76', '#238b45', '#005824'],
             unit: 'Species / Km²',
             extent: [0.5, 89],
+            attributions: {
+              title: 'Amphibians',
+              content: 'Species data sourced from JRC Digital Observatory for Protected Areas (<a href="http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/" target="_blank">http://dopa-explorer.jrc.ec.europa.eu/dopa_explorer/</a>) calculated by overlaying the range polygons from the IUCN Redlist. The IUCN Red List of Threatened Species provides taxonomic, conservation status, and distribution information on taxa that are facing a high risk of global extinction (see more at <a href="http://www.iucnredlist.org/" target="_blank">http://www.iucnredlist.org/</a>).'
+            },
             url: '',
             tileLayer: null,
             request: {
