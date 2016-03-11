@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "029012b0e794f682aea1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b235f6b11a12db5624d9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -717,11 +717,11 @@
 
 	var _controls2 = _interopRequireDefault(_controls);
 
-	var _legend = __webpack_require__(47);
+	var _legend = __webpack_require__(48);
 
 	var _legend2 = _interopRequireDefault(_legend);
 
-	var _modal = __webpack_require__(51);
+	var _modal = __webpack_require__(52);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
@@ -11212,6 +11212,7 @@
 	        }
 	      }, {
 	        name: 'Birds',
+	        nested: true,
 	        zIndex: 3,
 	        colorScale: ['#F1E6F1', '#D8BBD8', '#CCA5CC', '#C08FC0', '#B379B3', '#A05AA0', '#8A4E8A'],
 	        unit: 'Species / Km²',
@@ -11237,6 +11238,7 @@
 	        }
 	      }, {
 	        name: 'Reptilians',
+	        nested: true,
 	        zIndex: 3,
 	        colorScale: ['#feedde', '#fdd0a2', '#fdae6b', '#fd8d3c', '#f16913', '#d94801', '#8c2d04'],
 	        unit: 'Species / Km²',
@@ -11262,6 +11264,7 @@
 	        }
 	      }, {
 	        name: 'Mammals',
+	        nested: true,
 	        zIndex: 3,
 	        colorScale: ['#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
 	        unit: 'Species / Km²',
@@ -11287,6 +11290,7 @@
 	        }
 	      }, {
 	        name: 'Amphibians',
+	        nested: true,
 	        zIndex: 3,
 	        colorScale: ['#edf8fb', '#ccece6', '#99d8c9', '#66c2a4', '#41ae76', '#238b45', '#005824'],
 	        unit: 'Species / Km²',
@@ -11565,19 +11569,23 @@
 
 	var _searchBox2 = _interopRequireDefault(_searchBox);
 
-	var _halfEarth_logo = __webpack_require__(42);
+	var _halfEarthLogo = __webpack_require__(42);
 
-	var _halfEarth_logo2 = _interopRequireDefault(_halfEarth_logo);
+	var _halfEarthLogo2 = _interopRequireDefault(_halfEarthLogo);
 
-	var _protectedAreas = __webpack_require__(43);
+	var _vizzualityLogo = __webpack_require__(43);
+
+	var _vizzualityLogo2 = _interopRequireDefault(_vizzualityLogo);
+
+	var _protectedAreas = __webpack_require__(44);
 
 	var _protectedAreas2 = _interopRequireDefault(_protectedAreas);
 
-	var _template = __webpack_require__(44);
+	var _template = __webpack_require__(45);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(45);
+	__webpack_require__(46);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11587,7 +11595,8 @@
 
 	  data: function data() {
 	    return {
-	      logo: _halfEarth_logo2.default,
+	      halfEarthLogo: _halfEarthLogo2.default,
+	      vizzualityLogo: _vizzualityLogo2.default,
 	      graph: _protectedAreas2.default
 	    };
 	  },
@@ -11875,7 +11884,7 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.radio-button {\n  position: relative;\n  padding: 5px 0;\n}\n\n.radio-button > .label {\n  cursor: pointer;\n  text-transform: uppercase;\n  font-size: 13px;\n  padding-left: 25px;\n}\n\n.radio-button > .label.-secondary {\n  text-transform: capitalize;\n}\n\n.radio-button > .label:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 0;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  height: 8px;\n  width: 8px;\n  border: 1px solid rgba(82,84,93, .3);\n  border-radius: 100%;\n}\n\n.radio-button > .input {\n  display: none;\n}\n\n.radio-button > .input:checked + .label:after {\n  background-color: #6db54d;\n  border: 1px solid #6db54d;\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.radio-button {\n  position: relative;\n  padding: 5px 0;\n}\n\n.radio-button > .label {\n  cursor: pointer;\n  text-transform: uppercase;\n  font-size: 13px;\n  padding-left: 25px;\n}\n\n.radio-button > .label.-secondary {\n  text-transform: capitalize;\n  padding-left: 35px;\n}\n\n.radio-button > .label:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 0;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  height: 8px;\n  width: 8px;\n  border: 1px solid rgba(82,84,93, .3);\n  border-radius: 100%;\n}\n\n.radio-button > .input {\n  display: none;\n}\n\n.radio-button > .input:checked + .label:after {\n  background-color: #6db54d;\n  border: 1px solid #6db54d;\n}\n", ""]);
 
 	// exports
 
@@ -11884,7 +11893,7 @@
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"layer-control\">\n  <li class=\"layer\" v-for=\"layer in layers\">\n    <div v-if=\"!layer.options\">\n      <checkbox\n        :name=\"layer.name\"\n        :on-change=\"toggleLayer(layer)\"\n        :model=\"layer.active\">\n      </checkbox>\n    </div>\n    <div v-else>\n      <radio-button\n        :name=\"layer.name\"\n        :on-change=\"toggleLayer(layer)\"\n        :model=\"layer.active\">\n      </radio-button>\n      <ul class=\"sub-layer\">\n        <li class=\"layer\" v-for=\"option in layer.options\">\n          <radio-button\n            :name=\"option.name\"\n            :on-change=\"toggleLayer(option, layer)\"\n            :model=\"layer.active\">\n          </radio-button>\n        </li>\n      </ul>\n    </div>\n  </li>\n</ul>\n";
+	module.exports = "<ul class=\"layer-control\">\n  <li class=\"layer\" v-for=\"layer in layers\">\n    <div v-if=\"!layer.options\">\n      <checkbox\n        :name=\"layer.name\"\n        :on-change=\"toggleLayer(layer)\"\n        :model=\"layer.active\">\n      </checkbox>\n    </div>\n    <div v-else>\n      <radio-button\n        :name=\"layer.name\"\n        :on-change=\"toggleLayer(layer)\"\n        :model=\"layer.active\">\n      </radio-button>\n      <ul class=\"sub-layer\">\n        <li class=\"layer\" v-for=\"option in layer.options\">\n          <radio-button\n            :name=\"option.name\"\n            :on-change=\"toggleLayer(option, layer)\"\n            :model=\"layer.active\"\n            :label-class=\"option.nested ? '-secondary' : ''\">\n          </radio-button>\n        </li>\n      </ul>\n    </div>\n  </li>\n</ul>\n";
 
 /***/ },
 /* 35 */
@@ -12038,24 +12047,30 @@
 
 /***/ },
 /* 43 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjYzOHB4IiBoZWlnaHQ9IjE1N3B4IiB2aWV3Qm94PSIwIDAgNjM4IDE1NyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDMuMy4yICgxMjA0MykgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+SW1wb3J0ZWQgTGF5ZXJzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IldPUksiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHNrZXRjaDp0eXBlPSJNU1BhZ2UiPgogICAgICAgIDxnIGlkPSJJbXBvcnRlZC1MYXllcnMiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIGZpbGw9IiM2NEQxQjgiPgogICAgICAgICAgICA8cGF0aCBkPSJNNDEuMjE1LDk5LjI4NSBMMjIuNTA4LDM3LjI1NCBMMC4zNTQsMzcuMjU0IEwyOS40LDEyNi44NTQgTDUyLjA0NiwxMjYuODU0IEw4MS41ODUsMzcuMjU0IEw1OS40MzEsMzcuMjU0IEw0MS4yMTUsOTkuMjg1IiBpZD0iRmlsbC0xIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04Mi41NjksMzcuMjU0IEwxMDMuNzM4LDM3LjI1NCBMMTAzLjczOCwxMjYuODU0IEw4Mi41NjksMTI2Ljg1NCBMODIuNTY5LDM3LjI1NCBaIiBpZD0iRmlsbC0yIiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04Mi41NjksMS44MDggTDEwMy43MzgsMS44MDggTDEwMy43MzgsMjMuNDY5IEw4Mi41NjksMjMuNDY5IEw4Mi41NjksMS44MDggWiIgaWQ9IkZpbGwtMyIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNMTEzLjU4NSw1Ni40NTQgTDE1Ny40LDU2LjQ1NCBMMTA4LjY2MiwxMTAuNjA4IEwxMDguNjYyLDEyNi44NTQgTDE4NS40NjIsMTI2Ljg1NCBMMTg1LjQ2MiwxMDcuNjU0IEwxMzguNjkyLDEwNy42NTQgTDE4NS40NjIsNTMuOTkyIEwxODUuNDYyLDM3LjI1NCBMMTEzLjU4NSwzNy4yNTQgTDExMy41ODUsNTYuNDU0IiBpZD0iRmlsbC00IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xOTAuMzg1LDU2LjQ1NCBMMjMzLjcwOCw1Ni40NTQgTDE4NS40NjIsMTEwLjYwOCBMMTg1LjQ2MiwxMjYuODU0IEwyNjIuNzU0LDEyNi44NTQgTDI2Mi43NTQsMTA3LjY1NCBMMjE1LDEwNy42NTQgTDI2Mi43NTQsNTMuOTkyIEwyNjIuNzU0LDM3LjI1NCBMMTkwLjM4NSwzNy4yNTQgTDE5MC4zODUsNTYuNDU0IiBpZD0iRmlsbC01IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0zMjguMjMxLDc3LjYyMyBDMzI4LjIzMSw4NC41MTUgMzI4LjIzMSw5Mi44ODUgMzI0Ljc4NSw5OS4yODUgQzMyMy4zMDgsMTAyLjczMSAzMTcuODkyLDEwOS4xMzEgMzA3LjU1NCwxMDkuMTMxIEMyOTIuMjkyLDEwOS4xMzEgMjkwLjMyMyw5Ny44MDggMjkwLjMyMyw4OC45NDYgTDI5MC4zMjMsMzcuMjU0IEwyNjguNjYyLDM3LjI1NCBMMjY4LjY2Miw5My44NjkgQzI2OC42NjIsMTAxLjc0NiAyNjkuMTU0LDExMC4xMTUgMjc0LjA3NywxMTcuNSBDMjc4LjAxNSwxMjIuOTE1IDI4NC45MDgsMTI5LjMxNSAzMDAuMTY5LDEyOS4zMTUgQzMxNS45MjMsMTI5LjMxNSAzMjQuNzg1LDEyMi40MjMgMzI4LjcyMywxMTcuOTkyIEwzMjguNzIzLDEyNy4zNDYgTDM1MC4zODUsMTI3LjM0NiBMMzUwLjM4NSwzNy43NDYgTDMyOC43MjMsMzcuNzQ2IEwzMjguNzIzLDc3LjYyMyBMMzI4LjIzMSw3Ny42MjMiIGlkPSJGaWxsLTYiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTQzNC41Nyw2MC4zOTIgQzQzNC41Nyw0NC42MzggNDIzLjI0NywzNC43OTIgMzk3LjE1NCwzNC43OTIgQzM1OS43MzksMzQuNzkyIDM1OC4yNjIsNTcuNDM4IDM1OC4yNjIsNjMuMzQ2IEwzNzkuOTIzLDY0LjMzMSBDMzc5LjkyMyw1OS40MDggMzgxLjQsNTEuMDM4IDM5Ny42NDYsNTEuMDM4IEM0MTAuOTM5LDUxLjAzOCA0MTIuOTA4LDU3LjQzOCA0MTIuOTA4LDY0LjMzMSBDNDA3LDY2LjMgMzk4LjYzMSw2OC43NjEgMzg1LjMzOSw3MC43MzEgQzM2OC42LDc0LjE3NyAzNTMuMzM5LDgxLjU2MiAzNTMuMzM5LDEwMS4yNTQgQzM1My4zMzksMTE2LjUxNSAzNjUuMTU0LDEyOC44MjMgMzg1LjgzMSwxMjguODIzIEMzOTYuNjYyLDEyOC44MjMgNDA2LjUwOCwxMjQuMzkyIDQxMi40MTYsMTE5LjQ2OSBMNDEyLjkwOCwxMjYuMzYyIEw0MzguNTA4LDEyNi4zNjIgQzQzNC41NywxMjAuNDU0IDQzNC41NywxMTguOTc3IDQzNC41NywxMTEuNTkyIEw0MzQuNTcsNjAuMzkyIEw0MzQuNTcsNjAuMzkyIFogTTQxMi40MTYsOTQuMzYxIEM0MTIuNDE2LDEwNS42ODUgNDAwLjYsMTEwLjYwOCAzOTAuMjYyLDExMC42MDggQzM3OS40MzEsMTEwLjYwOCAzNzUuNDkzLDEwNS42ODUgMzc1LjQ5Myw5OS43NzcgQzM3NS40OTMsOTAuNDIzIDM4NS4zMzksODguOTQ2IDM5NS4xODUsODcuNDY5IEM0MDMuMDYyLDg2LjQ4NCA0MDguNDc3LDg0LjAyMyA0MTEuOTIzLDgyLjU0NiBMNDExLjkyMyw5NC4zNjEgTDQxMi40MTYsOTQuMzYxIEw0MTIuNDE2LDk0LjM2MSBaIiBpZD0iRmlsbC03IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00NDQuNDE2LDAuODIzIEw0NjYuMDc3LDAuODIzIEw0NjYuMDc3LDEyNy4zNDYgTDQ0NC40MTYsMTI3LjM0NiBMNDQ0LjQxNiwwLjgyMyBaIiBpZD0iRmlsbC04IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00NzcuNCwxLjgwOCBMNDk4LjU2OSwxLjgwOCBMNDk4LjU2OSwyMy40NjkgTDQ3Ny40LDIzLjQ2OSBMNDc3LjQsMS44MDggWiIgaWQ9IkZpbGwtOSIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNjAzLjQzMSwzNy4yNTQgTDU4Ni42OTIsMTAzLjcxNSBMNTY2LjUwOCwzNy4yNTQgTDUzMi41MzksMzcuMjU0IEw1MzIuNTM5LDUuMjU0IEw1MTAuODc3LDUuMjU0IEw1MTAuODc3LDM3LjI1NCBMNDc2LjkwOCwzNy4yNTQgTDQ3Ni45MDgsMTI2Ljg1NCBMNDk4LjA3NywxMjYuODU0IEw0OTguMDc3LDUyLjUxNSBMNTEwLjg3Nyw1Mi41MTUgTDUxMC44NzcsMTA1LjY4NSBDNTEwLjg3NywxMjAuNDU0IDUxNi43ODUsMTI3LjM0NiA1MzYuNDc3LDEyNy4zNDYgQzU0My44NjIsMTI3LjM0NiA1NDguNzg1LDEyNi4zNjEgNTUxLjczOCwxMjUuODY5IEw1NTEuNzM4LDEwNy42NTQgQzU0OS4yNzcsMTA4LjE0NiA1NDUuODMxLDEwOC42MzggNTQyLjM4NCwxMDguNjM4IEM1NDEuNCwxMDguNjM4IDUzNi45NjksMTA4LjYzOCA1MzQuNTA3LDEwNi4xNzcgQzUzMi41MzgsMTA0LjIwOCA1MzIuNTM4LDEwMC4yNjkgNTMyLjUzOCw5Ni44MjMgTDUzMi41MzgsNTIuNTE1IEw1NDguMjkyLDUyLjUxNSBMNTc1LjM2OSwxMjguMzMxIEM1NzQuODc3LDEzMC4zIDU3Mi45MDcsMTM3LjY4NSA1NjAuNiwxMzcuNjg1IEM1NTkuMTIzLDEzNy42ODUgNTU2LjY2MSwxMzcuNjg1IDU1NC42OTIsMTM3LjE5MiBMNTU0LjY5MiwxNTUuNDA4IEM1NTguMTM4LDE1NS45IDU2MC42LDE1Ni4zOTIgNTY3LDE1Ni4zOTIgQzU3My44OTIsMTU2LjM5MiA1NzkuMzA3LDE1NS40MDggNTg1LjIxNSwxNTAuOTc3IEM1OTIuNiwxNDUuMDY5IDU5Ny4wMzEsMTI4LjgyMyA2MDAuNDc3LDExNy45OTIgTDYyNS4wOTIsMzcuMjU0IEw2MDMuNDMxLDM3LjI1NCIgaWQ9IkZpbGwtMTAiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICAgICAgPHBhdGggZD0iTTYxMy43NjksMTAyLjczMSBMNjM3LjQsMTAyLjczMSBMNjM3LjQsMTI3LjM0NiBMNjEzLjc2OSwxMjcuMzQ2IEw2MTMuNzY5LDEwMi43MzEgWiIgaWQ9IkZpbGwtMTEiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+
+/***/ },
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "148148d08ffb0e63b546c4000dd6b843.jpg";
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"controls\">\n  <a href=\"#\" class=\"logo\">\n    <img :src=\"logo\" alt=\"Half Earth\" />\n  </a>\n  <img :src=\"graph\" class=\"graph\" alt=\"Graph\" />\n  <hr>\n  <layer-control></layer-control>\n  <hr>\n  <search-box placeholder=\"Search location\" :callback=\"onSearch\"></search-box>\n</div>\n";
+	module.exports = "<div class=\"controls\">\n  <a href=\"#\" class=\"half-earth-logo\">\n    <img :src=\"halfEarthLogo\" alt=\"Half Earth\" />\n  </a>\n  <img :src=\"graph\" class=\"graph\" alt=\"Graph\" />\n  <hr>\n  <layer-control></layer-control>\n  <hr>\n  <search-box placeholder=\"Search location\" :callback=\"onSearch\"></search-box>\n  <a href=\"http://www.vizzuality.com\" target=\"_blank\" class=\"vizzuality-logo\">\n    <img :src=\"vizzualityLogo\" alt=\"Vizzuality\" />\n  </a>\n</div>\n";
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(46);
+	var content = __webpack_require__(47);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -12064,8 +12079,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(46, function() {
-				var newContent = __webpack_require__(46);
+			module.hot.accept(47, function() {
+				var newContent = __webpack_require__(47);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -12075,7 +12090,7 @@
 	}
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -12083,13 +12098,13 @@
 
 
 	// module
-	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  max-height: calc(100% - 20px);\n  overflow: scroll;\n  -webkit-overflow-scrolling: touch;\n  padding: 85px 20px 20px 30px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1), 0 0 0 1px rgba(0,0,0, .05);\n}\n\n.controls > .logo {\n  display: block;\n  text-align: center;\n  padding-top: 20px;\n  padding-bottom: 12px;\n  position: fixed;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  background-color: #fff;\n  border-bottom: 1px solid rgba(34,34,34, .1);\n  z-index: 1;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > hr {\n  width: calc(100% + 50px);\n  position: relative;\n  left: -30px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n", ""]);
+	exports.push([module.id, "/* USE HEX COLORS FOR COMPATIBILITY WITH POSTCSS COLOR PLUGIN */\n\n.controls {\n  position: absolute;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  max-height: calc(100% - 20px);\n  overflow: scroll;\n  -webkit-overflow-scrolling: touch;\n  padding: 85px 20px 20px 30px;\n  background-color: #fff;\n  box-shadow: 0 5px 15px 0 rgba(0,0,0, .1), 0 0 0 1px rgba(0,0,0, .05);\n}\n\n.controls > .half-earth-logo {\n  display: block;\n  text-align: center;\n  padding-top: 20px;\n  padding-bottom: 12px;\n  position: fixed;\n  top: 0;\n  left: 20px;\n  width: 280px;\n  background-color: #fff;\n  border-bottom: 1px solid rgba(34,34,34, .1);\n  z-index: 1;\n}\n\n.controls > .graph {\n  display: block;\n  margin: 30px auto;\n  width: 206px;\n}\n\n.controls > .search-box {\n  margin-bottom: 15px;\n}\n\n.controls > hr {\n  width: calc(100% + 50px);\n  position: relative;\n  left: -30px;\n  border:none;\n  border-top: 1px solid rgba(34,34,34, .1);\n}\n\n.controls > .vizzuality-logo {\n  display: block;\n  margin-top: 30px;\n}\n\n.controls > .vizzuality-logo > img {\n  height: 20px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12110,11 +12125,11 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _template = __webpack_require__(48);
+	var _template = __webpack_require__(49);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(49);
+	__webpack_require__(50);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12159,19 +12174,19 @@
 	});
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"legend\" v-if=\"activeLayers.length\">\n  <template v-for=\"layer in activeLayers\">\n    <div class=\"info\">\n      <span class=\"title\">{{layer.name}}</span>\n      <a class=\"modal-link\" @click=\"openModal(layer)\" v-if=\"layer.attributions\">+ Info</a>\n      <span class=\"unit\" v-if=\"layer.unit\">{{layer.unit}}</span>\n    </div>\n    <div class=\"extent\" v-if=\"layer.extent\">\n      <span>{{layer.extent[0]}}</span>\n      <span>{{layer.extent[1]}}</span>\n    </div>\n    <div class=\"scale\" v-if=\"layer.colorScale\">\n      <div :style=\"'background-color:'+color+';'\" v-for=\"color in layer.colorScale\">\n      </div>\n    </div>\n    <ul class=\"categories\" v-if=\"layer.categories\">\n      <li class=\"category\" v-for=\"category in layer.categories\">\n        <span class=\"color\" :style=\"'background-color:'+category.color+'; border:1px solid '+category.border+'; opacity:'+category.opacity+';'\"></span>\n        <span class=\"title\">{{category.name}}</span>\n      </li>\n    </ul>\n  </template>\n</div>\n";
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(50);
+	var content = __webpack_require__(51);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -12180,8 +12195,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(50, function() {
-				var newContent = __webpack_require__(50);
+			module.hot.accept(51, function() {
+				var newContent = __webpack_require__(51);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -12191,7 +12206,7 @@
 	}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -12205,7 +12220,7 @@
 
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12226,15 +12241,15 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _close = __webpack_require__(52);
+	var _close = __webpack_require__(53);
 
 	var _close2 = _interopRequireDefault(_close);
 
-	var _template = __webpack_require__(53);
+	var _template = __webpack_require__(54);
 
 	var _template2 = _interopRequireDefault(_template);
 
-	__webpack_require__(54);
+	__webpack_require__(55);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12273,25 +12288,25 @@
 	});
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEwcHgiIGhlaWdodD0iMTBweCIgdmlld0JveD0iMCAwIDEwIDEwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzLjYuMSAoMjYzMTMpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPmNsb3NlPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBhdGggaWQ9InBhdGgtMSIgZD0iTTEwMjUuMzI5MTQsMTgwLjI1ODA3MyBMMTAyMy45MTQ5MywxNzguODQzODYgTDEwMjEuMDg2NSwxODEuNjcyMjg3IEwxMDE4LjI1ODA3LDE3OC44NDM4NiBMMTAxNi44NDM4NiwxODAuMjU4MDczIEwxMDE5LjY3MjI5LDE4My4wODY1MDEgTDEwMTYuODQzODYsMTg1LjkxNDkyOCBMMTAxOC4yNTgwNywxODcuMzI5MTQxIEwxMDIxLjA4NjUsMTg0LjUwMDcxNCBMMTAyMy45MTQ5MywxODcuMzI5MTQxIEwxMDI1LjMyOTE0LDE4NS45MTQ5MjggTDEwMjIuNTAwNzEsMTgzLjA4NjUwMSBMMTAyNS4zMjkxNCwxODAuMjU4MDczIFoiPjwvcGF0aD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJQcm9wb3NhbF8wMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhhbGYtRWFydGgtTWFwLWluZm8iIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMDE2LjAwMDAwMCwgLTE3OC4wMDAwMDApIj4KICAgICAgICAgICAgPGcgaWQ9ImNsb3NlIj4KICAgICAgICAgICAgICAgIDx1c2UgZmlsbD0iI0ZGRkZGRiIgZmlsbC1ydWxlPSJldmVub2RkIiB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICAgICAgICAgIDx1c2UgZmlsbD0ibm9uZSIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICAgICAgICAgICAgICA8dXNlIGZpbGw9Im5vbmUiIHhsaW5rOmhyZWY9IiNwYXRoLTEiPjwvdXNlPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-mask\" v-if=\"active\" transition=\"modal\" @click=\"closeModal\">\n  <div class=\"modal-wrapper\">\n    <div class=\"modal-container\">\n      <h1>{{title}}</h1>\n      <p>{{{content}}}</p>\n      <button class=\"ok-button\" @click=\"closeModal\">Ok</button>\n      <img :src=\"closeButton\" class=\"close-button\" alt=\"Close modal\" />\n    </div>\n  </div>\n</div>\n";
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(55);
+	var content = __webpack_require__(56);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(14)(content, {});
@@ -12300,8 +12315,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(55, function() {
-				var newContent = __webpack_require__(55);
+			module.hot.accept(56, function() {
+				var newContent = __webpack_require__(56);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -12311,7 +12326,7 @@
 	}
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
