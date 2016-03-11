@@ -8,7 +8,8 @@ import utils from '../../utils';
 import LayerControl from '../layer-control';
 import SearchBox from '../search-box';
 
-import logo from '../../../images/half-earth_logo.svg';
+import halfEarthLogo from '../../../images/half-earth-logo.svg';
+import vizzualityLogo from '../../../images/vizzuality-logo.svg';
 import graph from '../../../images/protected-areas.jpg';
 import template from './template.html';
 import './style.css';
@@ -19,7 +20,8 @@ export default Vue.extend({
 
   data() {
     return {
-      logo,
+      halfEarthLogo,
+      vizzualityLogo,
       graph
     };
   },
