@@ -18,7 +18,8 @@
           <radio-button
             :name="option.name"
             :on-change="toggleLayer(option, layer)"
-            :model="layer.active">
+            :model="layer.active"
+            :label-class="option.nested ? '-secondary' : ''">
           </radio-button>
         </li>
       </ul>

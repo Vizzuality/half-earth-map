@@ -123,6 +123,7 @@ export default {
           },
           {
             name: 'Birds',
+            nested: true,
             zIndex: 3,
             colorScale: ['#F1E6F1', '#D8BBD8', '#CCA5CC', '#C08FC0', '#B379B3', '#A05AA0', '#8A4E8A'],
             unit: 'Species / Km²',
@@ -151,6 +152,7 @@ export default {
           },
           {
             name: 'Reptilians',
+            nested: true,
             zIndex: 3,
             colorScale: ['#feedde', '#fdd0a2', '#fdae6b', '#fd8d3c', '#f16913', '#d94801', '#8c2d04'],
             unit: 'Species / Km²',
@@ -179,6 +181,7 @@ export default {
           },
           {
             name: 'Mammals',
+            nested: true,
             zIndex: 3,
             colorScale: ['#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
             unit: 'Species / Km²',
@@ -207,6 +210,7 @@ export default {
           },
           {
             name: 'Amphibians',
+            nested: true,
             zIndex: 3,
             colorScale: ['#edf8fb', '#ccece6', '#99d8c9', '#66c2a4', '#41ae76', '#238b45', '#005824'],
             unit: 'Species / Km²',

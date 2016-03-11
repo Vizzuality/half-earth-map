@@ -10,7 +10,10 @@
     font-size: 13px;
     padding-left: 25px;
 
-    &.-secondary { text-transform: capitalize; }
+    &.-secondary {
+      text-transform: capitalize;
+      padding-left: 35px;
+    }
 
     &:after {
       content: '';
