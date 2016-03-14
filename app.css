@@ -1,59 +1,12 @@
 @import "normalize.css/normalize.css";
-@import "./settings.css";
-
-@font-face {
-  font-family: 'Pier Sans';
-  src: url('../fonts/pier-regular.otf') format('opentype');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'Pier Sans';
-  src: url('../fonts/pier-bold.otf') format('opentype');
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: 'Pier Sans';
-  src: url('../fonts/pier-italic.otf') format('opentype');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Pier Sans';
-  src: url('../fonts/pier-bold-italic.otf') format('opentype');
-  font-weight: bold;
-  font-style: italic;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-  width: 100%;
-}
 
 /* Base styles */
 body {
-  height: 100%;
-  width: 100%;
-
   line-height: 1.5;
-  letter-spacing: .3px;
   color: #333;
 
   background: white;
 
-  font-family: 'Pier Sans';
-  color: $color-4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#app, #app > .wrapper {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
 }
