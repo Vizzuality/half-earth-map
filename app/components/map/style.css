@@ -3,6 +3,7 @@
 .map {
   height: 100%;
   width: 100%;
+  background-color: $color-9;
 
   .leaflet-control-zoom {
     margin-top: 20px !important;
