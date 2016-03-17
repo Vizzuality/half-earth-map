@@ -46,10 +46,11 @@ export default Vue.extend({
 
     createMap() {
       this.map = L.map(this.$el, {
-        zoom: 4,
+        zoom: location.search.search('embed') === 1 ? 3 : 4,
         center: this.center,
         maxZoom: 19,
-        zoomControl: false
+        zoomControl: false,
+        scrollWheelZoom: !(location.search.search('embed') === 1)
       });
 
       Actions.registerMap(this.map);
