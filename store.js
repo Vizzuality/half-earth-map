@@ -8,6 +8,10 @@ export default {
 
   state: {
 
+    global: {
+      loading: 0
+    },
+
     map: {
       map: null,
       center: [0, 0],
@@ -249,10 +253,27 @@ export default {
      * Leaflet tileLayer object on it */
     LOAD_TILE_LAYER(store, layer) {
       utils.$post('https://simbiotica.cartodb.com/api/v1/map/',
-        layer.request, data => {
-          layer.url = `https://simbiotica.cartodb.com/api/v1/map/${data.layergroupid}/{z}/{x}/{y}.png32`;
-          layer.tileLayer = L.tileLayer(layer.url, {zIndex: layer.zIndex});
-        });
+        layer.request, (function (data) {
+          /* Private variable to prevent consecutive zooms to increment the
+           * store's loading variable more than once because the decrement will
+           * only be just triggered once */
+          let loading = false;
+
+          return data => {
+            layer.url = `https://simbiotica.cartodb.com/api/v1/map/${data.layergroupid}/{z}/{x}/{y}.png32`;
+            layer.tileLayer = L.tileLayer(layer.url, {zIndex: layer.zIndex})
+              .on('loading', () => {
+                if (!loading) {
+                  loading = true;
+                  store.mutations.INCREMENT_LOADING(store);
+                }
+              })
+              .on('load', () => {
+                store.mutations.DECREMENT_LOADING(store);
+                loading = false;
+              });
+          };
+        })());
     },
 
     /* Toggle the active state of the passed layer. If layer is a sub-layer,
@@ -349,6 +370,16 @@ export default {
     /* Close the modal */
     CLOSE_MODAL(store) {
       store.state.modal.active = false;
+    },
+
+    INCREMENT_LOADING(store) {
+      store.state.global.loading++;
+    },
+
+    DECREMENT_LOADING(store) {
+      if (store.state.global.loading > 0) {
+        store.state.global.loading--;
+      }
     }
 
   }

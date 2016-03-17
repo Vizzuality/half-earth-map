@@ -32,6 +32,14 @@ export default {
 
   closeModal() {
     Store.mutations.CLOSE_MODAL(Store);
+  },
+
+  toggleLoading(bool) {
+    if (bool) {
+      Store.mutations.INCREMENT_LOADING(Store);
+    } else {
+      Store.mutations.DECREMENT_LOADING(Store);
+    }
   }
 
 };
