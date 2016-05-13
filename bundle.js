@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e865da3ed79426172393"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "dab8a22c276b199f1396"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -10717,7 +10717,7 @@
 	        name: 'Mammals',
 	        nested: true,
 	        zIndex: 3,
-	        colorScale: ['#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
+	        colorScale: ['#FFFFB2', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
 	        unit: 'Species / Km²',
 	        extent: [0.5, 156],
 	        attributions: {

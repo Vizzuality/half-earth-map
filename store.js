@@ -187,7 +187,7 @@ export default {
             name: 'Mammals',
             nested: true,
             zIndex: 3,
-            colorScale: ['#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
+            colorScale: ['#FFFFB2', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#B10026'],
             unit: 'Species / Km²',
             extent: [0.5, 156],
             attributions: {
